@@ -29,13 +29,37 @@
 
     /* Setup Section */
     .grid-setup { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
-    .input-group { display: flex; flex-direction: column; gap: 4px; }
+    .input-group { display: flex; flex-direction: column; gap: 4px; position: relative; }
     label { font-size: 0.85rem; color: var(--text-muted); }
     input[type="text"], input[type="number"] {
       background: var(--bg-color); border: 1px solid var(--border); color: var(--text);
       padding: 10px; border-radius: 6px; font-size: 1rem; outline: none;
     }
     input[type="text"]:focus, input[type="number"]:focus { border-color: var(--accent); }
+
+    .suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0 0 8px 8px;
+      z-index: 20;
+      max-height: 160px;
+      overflow-y: auto;
+      display: none;
+    }
+    .suggestions.show { display: block; }
+    .suggestion-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .suggestion-item:hover, .suggestion-item.active {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--accent);
+    }
 
     button {
       background: var(--accent); color: white; border: none; padding: 12px 20px; font-size: 1rem;
@@ -225,18 +249,66 @@
     let tournamentFinished = false;
 
     // --- Persistence (localStorage) ---
+    // Structure: { tournaments: [...], knownPlayers: [...] }
     const STORAGE_KEY = 'padel_americano_archive';
 
-    function loadArchive() {
+    function loadData() {
       try {
-        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (!raw) return { tournaments: [], knownPlayers: [] };
+        // Compatibilité avec l'ancien format (tableau simple)
+        if (Array.isArray(raw)) {
+          return { tournaments: raw, knownPlayers: extractNamesFromTournaments(raw) };
+        }
+        return {
+          tournaments: raw.tournaments || [],
+          knownPlayers: raw.knownPlayers || extractNamesFromTournaments(raw.tournaments || [])
+        };
       } catch {
-        return [];
+        return { tournaments: [], knownPlayers: [] };
       }
     }
 
-    function saveArchive(archive) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(archive));
+    function saveData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadArchive() {
+      return loadData().tournaments;
+    }
+
+    function saveArchive(tournaments) {
+      const data = loadData();
+      data.tournaments = tournaments;
+      // Mettre à jour les noms connus à partir des tournois
+      const namesFromTournaments = extractNamesFromTournaments(tournaments);
+      data.knownPlayers = mergeUniqueNames(data.knownPlayers, namesFromTournaments);
+      saveData(data);
+    }
+
+    function extractNamesFromTournaments(tournaments) {
+      const names = new Set();
+      tournaments.forEach(t => {
+        (t.ranking || []).forEach(p => {
+          if (p.name) names.add(p.name);
+        });
+      });
+      return Array.from(names);
+    }
+
+    function mergeUniqueNames(listA, listB) {
+      const set = new Set([...(listA || []), ...(listB || [])].map(n => n.trim()).filter(Boolean));
+      return Array.from(set).sort((a, b) => a.localeCompare(b, 'fr'));
+    }
+
+    function getKnownPlayers() {
+      return loadData().knownPlayers || [];
+    }
+
+    function addKnownPlayers(names) {
+      const data = loadData();
+      data.knownPlayers = mergeUniqueNames(data.knownPlayers, names);
+      saveData(data);
     }
 
     // --- UI generation ---
@@ -245,15 +317,112 @@
       setupInputs.innerHTML += `
         <div class="input-group">
           <label>Joueur ${i + 1}</label>
-          <input type="text" id="p${i}" value="Joueur ${i + 1}"
-                 onfocus="if(this.value === 'Joueur ${i + 1}') this.value = '';"
-                 onblur="if(this.value.trim() === '') this.value = 'Joueur ${i + 1}';">
+          <input type="text" id="p${i}" value="Joueur ${i + 1}" autocomplete="off"
+                 onfocus="onNameFocus(this, ${i})"
+                 oninput="onNameInput(this, ${i})"
+                 onblur="onNameBlur(this, ${i})"
+                 onkeydown="onNameKeydown(event, ${i})">
+          <div class="suggestions" id="suggestions-${i}"></div>
         </div>
       `;
     }
 
     // Render archive on load
     renderArchive();
+
+    // --- Autocomplétion des noms ---
+    let activeSuggestionIndex = -1;
+
+    function onNameFocus(el, idx) {
+      if (el.value === `Joueur ${idx + 1}`) {
+        el.value = '';
+      }
+      activeSuggestionIndex = -1;
+      showSuggestions(el, idx);
+    }
+
+    function onNameInput(el, idx) {
+      activeSuggestionIndex = -1;
+      showSuggestions(el, idx);
+    }
+
+    function onNameBlur(el, idx) {
+      // Petit délai pour laisser le temps au clic sur une suggestion
+      setTimeout(() => {
+        hideSuggestions(idx);
+        if (el.value.trim() === '') {
+          el.value = `Joueur ${idx + 1}`;
+        }
+      }, 180);
+    }
+
+    function onNameKeydown(e, idx) {
+      const box = document.getElementById(`suggestions-${idx}`);
+      const items = box.querySelectorAll('.suggestion-item');
+      if (!items.length || !box.classList.contains('show')) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeSuggestionIndex = (activeSuggestionIndex + 1) % items.length;
+        updateActiveSuggestion(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeSuggestionIndex = (activeSuggestionIndex - 1 + items.length) % items.length;
+        updateActiveSuggestion(items);
+      } else if (e.key === 'Enter' && activeSuggestionIndex >= 0) {
+        e.preventDefault();
+        items[activeSuggestionIndex].click();
+      } else if (e.key === 'Escape') {
+        hideSuggestions(idx);
+      }
+    }
+
+    function updateActiveSuggestion(items) {
+      items.forEach((item, i) => {
+        item.classList.toggle('active', i === activeSuggestionIndex);
+      });
+    }
+
+    function showSuggestions(el, idx) {
+      const box = document.getElementById(`suggestions-${idx}`);
+      const query = el.value.trim().toLowerCase();
+      const known = getKnownPlayers();
+
+      if (!query) {
+        box.classList.remove('show');
+        box.innerHTML = '';
+        return;
+      }
+
+      // Filtrer les noms qui commencent par la saisie
+      const matches = known.filter(n => n.toLowerCase().startsWith(query) && n.toLowerCase() !== query);
+
+      // Afficher seulement s'il y a 2 propositions ou plus
+      if (matches.length < 2) {
+        box.classList.remove('show');
+        box.innerHTML = '';
+        return;
+      }
+
+      box.innerHTML = matches.slice(0, 8).map(name =>
+        `<div class="suggestion-item" onmousedown="selectSuggestion(${idx}, '${name.replace(/'/g, "\\'")}')">${name}</div>`
+      ).join('');
+      box.classList.add('show');
+    }
+
+    function selectSuggestion(idx, name) {
+      const el = document.getElementById(`p${idx}`);
+      el.value = name;
+      hideSuggestions(idx);
+      el.focus();
+    }
+
+    function hideSuggestions(idx) {
+      const box = document.getElementById(`suggestions-${idx}`);
+      box.classList.remove('show');
+      box.innerHTML = '';
+      activeSuggestionIndex = -1;
+    }
 
     function startTournament() {
       players = [];
@@ -273,6 +442,9 @@
         alert('Tous les joueurs doivent avoir des noms différents. Merci de corriger les doublons.');
         return;
       }
+
+      // Enregistrer les noms dans la liste connue
+      addKnownPlayers(names);
 
       for (let i = 0; i < 8; i++) {
         players.push({
@@ -608,14 +780,14 @@
     }
 
     function clearArchive() {
-      if (!confirm('Effacer TOUT l\'historique des tournois ? Cette action est irréversible.')) return;
+      if (!confirm('Effacer TOUT l\'historique des tournois et la liste des joueurs connus ? Cette action est irréversible.')) return;
       localStorage.removeItem(STORAGE_KEY);
       renderArchive();
     }
 
     function exportArchive() {
-      const archive = loadArchive();
-      const blob = new Blob([JSON.stringify(archive, null, 2)], { type: 'application/json' });
+      const data = loadData();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -630,15 +802,42 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         try {
-          const data = JSON.parse(e.target.result);
-          if (!Array.isArray(data)) throw new Error('Format invalide');
-          const current = loadArchive();
-          // Merge, avoid exact duplicates by id
-          const existingIds = new Set(current.map(t => t.id));
-          const newOnes = data.filter(t => !existingIds.has(t.id));
-          saveArchive([...newOnes, ...current]);
+          const imported = JSON.parse(e.target.result);
+          const current = loadData();
+
+          let importedTournaments = [];
+          let importedPlayers = [];
+
+          // Nouveau format { tournaments, knownPlayers }
+          if (imported && !Array.isArray(imported) && imported.tournaments) {
+            importedTournaments = imported.tournaments || [];
+            importedPlayers = imported.knownPlayers || [];
+          }
+          // Ancien format (tableau de tournois)
+          else if (Array.isArray(imported)) {
+            importedTournaments = imported;
+            importedPlayers = extractNamesFromTournaments(imported);
+          } else {
+            throw new Error('Format invalide');
+          }
+
+          // Fusionner les tournois (éviter les doublons d'id)
+          const existingIds = new Set(current.tournaments.map(t => t.id));
+          const newOnes = importedTournaments.filter(t => !existingIds.has(t.id));
+
+          const mergedTournaments = [...newOnes, ...current.tournaments];
+          const mergedPlayers = mergeUniqueNames(
+            current.knownPlayers,
+            mergeUniqueNames(importedPlayers, extractNamesFromTournaments(mergedTournaments))
+          );
+
+          saveData({
+            tournaments: mergedTournaments,
+            knownPlayers: mergedPlayers
+          });
+
           renderArchive();
-          alert(`${newOnes.length} tournoi(s) importé(s).`);
+          alert(`${newOnes.length} tournoi(s) importé(s).\n${mergedPlayers.length} joueur(s) connus au total.`);
         } catch {
           alert('Fichier JSON invalide.');
         }
