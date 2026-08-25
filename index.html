@@ -6,6 +6,1012 @@
   <title>Padel Americano Tracker (8 Joueurs - 16 Pts)</title>
 
   <!-- Favicon navigateur (balle jaune sur fond bleu) - intégré -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23ffffff%22%2F%3E%3Crect%20x%3D%220.5%22%20y%3D%220.5%22%20width%3D%2299%22%20height%3D%2299%22%20fill%3D%22none%22%20stroke%3D%22%23e2e8f0%22%20stroke-width%3D%221%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2254%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-weight%3D%22700%22font-size%3D%2214%22%20fill%3D%22%231e40af%22%3EAMERICANO%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
+  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABgElEQVR4nGN89OIDAy0BCwMDg6w4P41Mf/zyIxONjIaDUQtGLRi1YNQCIi3IajzNwMDQMv2KfczuP3//W0fu6pl7vWX6FXnHDfKOGyAMw4Bt9x5/aZl+Zcmm+9fvfXJO2Kvnt/XUpbcMDAw+6QfgJoQXHLl5/1Nc2bFLNz/YRe9mgJSmpy69/f7zLwMDAx8Pa/2kSyIC7HD7RQShbE4OFkkxTgh7yuKbMX4KCYHKjIwMj59/+/bjL9yEZ6++n7nyjoGBYfryW0nBylAf6GsI7D3+goGBIcxTftfR50FushCDWgv1z67zZGBgaMjVFRZgu3H3I0T8PwMDIwMjhL15/xM7EzG4CYnBSgvW3YVIMTLCgmjPsRdb9j9lYGDg52U9vcaDi5MFoqK6/6K844Y/f/6zsjCFesit3/MEIp4bo7Zwwz1d362nLr3deuDZ/HV34SaICLJbGYkyMDBkRqrNWX2XgYGB8dGLD6MVzqgFoxaMWjDsLWBhYGB4/PIj7SwAAJKxmVfwJn7FAAAAAElFTkSuQmCC" type="image/png" sizes="32x32">
+
+  <!-- Apple Touch Icon (Ajouter à l'écran d'accueil iOS) - intégré -->
+  <link rel="apple-touch-icon" href="data:image/png;base64,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r+LIEfQ7dmQQP2maPG4I/8NuttkutJQl6THcC34atTR9uPjD6JXMFUnVBemF2TOnT7BNaNZmlZ8vc3X5E4oMtd31lV4WdalmAzRWLz2dwN1l1DcZduXWUKuFDbYdYeVVndN1KtU9HsQN8K2s1cr25ds+8IUyLT8ZHDEzV3iacntlWTBNNcjPdqcQO8xvwtgQkYfRB1KJJFrls+2d+/lHohardc22MpGbC2eg9U0G4fyUMlBjpQpVPrUgmnv9cfav1MTjgXuC+de/VrfVNugd18krauRf+yplI0eImjyJjeP0peY6jftbc9bz5t4phafH44I7qyXp0SKPoT885dKXlyfwb8+V3hD55C0tRcU/n2CMvb7hotMn/Ud+aODvmAZwrFZmxHPTiOabnWbiypI2VaXw7J5qWK3sva2ldne/FVVtwgdL6dMjudmMW2LjcD0nEjKZLW4fDy9Jj+Fu1bwVHo/NHuZ65YEyLzUyXHAG3v7Nb2K28veVv7I8kX9b26Cf9/yJXQdrGq/fMpstzTc7j/7YkPHqqRfePsNPXQdwrEICFcsfdfM4eEiw1/KFtuty3snG594qLrncYjRZtK3Gr4/UPvlyEf8bO1+l7C8Z8cSe7Il6fN5p7BLebW9+a1z6dPsJ4PvbSrO+6h7uvXnqjAUxLnYYFeFTU/CwyEO0s3pLyeotJY7LL383n/8COSXzkCx7ZPjarO4LyrGTmpp6vdOnAnaWPTL8Sq2O/wWQprnjjQ8vUisP+Fi9sDjuywPVwpsmR68+N7L0Sgv/CD//lCb/lMZxNZlMuunNcSInHEzkmeO7osb23++XfLxlsyaFO67zyAzbLyQvlGlr6p1c+e64J+dF8zd7Fqt1x55KkRu+t2rM+y+NcXxALqT0krHbMFb+vvLnF8e5PjyZh+TztROeXjjcxfUiMky5+8OJIp80ckTFIZw3PTQ53NvZQ4KRIwLiBE9g3E5L74gAP7nwKrbnaK3rX7QKZSyIKf5q9rurxsyeHB4ZpvTxlsk8JIH+nveOCnphcdzhrBTuzvN2jNUzj8aGBCpcryOXSd9ZefeJ7BkrM+KTRwWFBCpkMqmPUjYs3Gd+qmrjG8mF2TPvSwp2vRM7kquaFsbY0NBePPuD/3vqplaG/00QXEAcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQJJxf6mbWu/sccAfEM4cQPofn8cvc0e4lqwAAAAASUVORK5CYII=">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Americano">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#1e40af">
+
+  <style>
+    :root {
+      --bg-color: #f1f5f9;
+      --card-bg: #ffffff;
+      --court-bg: #1e40af;
+      --accent: #059669;
+      --accent-hover: #047857;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-on-blue: #ffffff;
+      --border: #e2e8f0;
+      --gold: #ca8a04;
+      --silver: #64748b;
+      --bronze: #c2410c;
+      --score-bg: #ffffff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background-color: var(--bg-color); color: var(--text); padding: 16px; max-width: 960px; margin: 0 auto; }
+    
+    h1 { text-align: center; color: var(--court-bg); margin-bottom: 8px; font-size: 1.8rem; }
+    p.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem; }
+
+    .card { background: var(--card-bg); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    h2 { font-size: 1.25rem; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; color: var(--court-bg); }
+
+    /* Setup Section */
+    .grid-setup { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .input-group { display: flex; flex-direction: column; gap: 4px; position: relative; }
+    label { font-size: 0.85rem; color: var(--text-muted); }
+    input[type="text"], input[type="number"] {
+      background: #f8fafc; border: 1px solid var(--border); color: var(--text);
+      padding: 10px; border-radius: 6px; font-size: 1rem; outline: none;
+    }
+    input[type="text"]:focus, input[type="number"]:focus { border-color: var(--accent); }
+
+    .suggestions {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0 0 8px 8px;
+      z-index: 20;
+      max-height: 160px;
+      overflow-y: auto;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      display: none;
+    }
+    .suggestions.show { display: block; }
+    .suggestion-item {
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+    .suggestion-item:hover, .suggestion-item.active {
+      background: #ecfdf5;
+      color: var(--accent);
+    }
+
+    button {
+      background: var(--accent); color: white; border: none; padding: 12px 20px; font-size: 1rem;
+      font-weight: bold; border-radius: 8px; cursor: pointer; width: 100%; transition: background 0.2s;
+    }
+    button:hover { background: var(--accent-hover); }
+    button:disabled { background: #94a3b8; cursor: not-allowed; }
+
+    /* Courts Section */
+    .court-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 16px; }
+    .court {
+      background: var(--court-bg);
+      border: none;
+      border-radius: 12px;
+      padding: 16px;
+      position: relative;
+      box-shadow: 0 2px 8px rgba(30, 64, 175, 0.25);
+    }
+    .court-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .court-title {
+      background: rgba(255,255,255,0.2);
+      color: var(--text-on-blue);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 4px 14px;
+      border-radius: 20px;
+      align-self: flex-start;
+    }
+    .scores-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      width: 100%;
+    }
+    .score-input {
+      width: 60px;
+      height: 44px;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: var(--score-bg);
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 8px;
+      color: var(--text);
+      -moz-appearance: textfield;
+    }
+    .score-input::-webkit-outer-spin-button,
+    .score-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    .score-input:focus { border-color: #facc15; outline: none; }
+
+    .match-body {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+      min-height: 80px;
+    }
+    .team-side {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .team-side.left { align-items: flex-start; text-align: left; }
+    .team-side.right { align-items: flex-end; text-align: right; }
+    .player-name {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      background: rgba(255,255,255,0.92);
+      padding: 7px 12px;
+      border-radius: 8px;
+      min-width: 100px;
+    }
+    .vs-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #facc15;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: bold;
+      color: #0f172a;
+    }
+
+    /* Leaderboard Table */
+    table { width: 100%; border-collapse: collapse; text-align: left; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
+    th { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; }
+    
+    tr.rank-1 { background: linear-gradient(90deg, rgba(250, 204, 21, 0.15), transparent); }
+    tr.rank-1 td { color: var(--gold); font-weight: bold; }
+    tr.rank-2 { background: linear-gradient(90deg, rgba(203, 213, 225, 0.12), transparent); }
+    tr.rank-2 td { color: var(--silver); font-weight: bold; }
+    tr.rank-3 { background: linear-gradient(90deg, rgba(249, 115, 22, 0.12), transparent); }
+    tr.rank-3 td { color: var(--bronze); font-weight: bold; }
+
+    /* History */
+    .history-list { display: flex; flex-direction: column; gap: 12px; max-height: 420px; overflow-y: auto; }
+    .history-round { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
+    .history-round h3 { font-size: 0.95rem; color: var(--court-bg); margin-bottom: 8px; }
+    .history-match {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .history-match:last-child { border-bottom: none; }
+    .history-match .team-left { text-align: right; }
+    .history-match .team-right { text-align: left; }
+    .score-badge {
+      font-weight: bold;
+      color: var(--accent);
+      min-width: 60px;
+      text-align: center;
+      background: #ecfdf5;
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    /* Past tournaments */
+    .past-tournament { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
+    .past-tournament h3 { font-size: 1rem; color: var(--court-bg); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+    .past-tournament .date { font-size: 0.8rem; color: var(--text-muted); font-weight: normal; }
+    .mini-rank { font-size: 0.85rem; display: flex; justify-content: space-between; padding: 3px 0; color: var(--text); }
+    .mini-rank .pos { width: 28px; color: var(--text-muted); }
+    .mini-rank.gold .name { color: var(--gold); font-weight: bold; }
+    .mini-rank.silver .name { color: var(--silver); font-weight: bold; }
+    .mini-rank.bronze .name { color: var(--bronze); font-weight: bold; }
+
+    .hidden { display: none; }
+    .nav-buttons { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+    .btn-secondary { background: #e2e8f0; color: var(--text); }
+    .btn-secondary:hover { background: #cbd5e1; }
+    .btn-danger { background: #dc2626; color: white; }
+    .btn-danger:hover { background: #b91c1c; }
+    .error-msg { color: #dc2626; font-size: 0.9rem; text-align: center; margin-top: 8px; }
+    .legend { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; text-align: center; }
+    .actions-row { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
+    .actions-row button { flex: 1; min-width: 140px; }
+  </style>
+</head>
+<body>
+
+  <h1>Padel Americano</h1>
+  <p class="subtitle">8 Joueurs • 2 Terrains • 16 Points par Match</p>
+
+  <!-- Step 1: Player Setup -->
+  <div id="setup-card" class="card">
+    <h2>Entrer les noms des joueurs</h2>
+    <div class="grid-setup" id="player-inputs"></div>
+    <button onclick="startTournament()">Démarrer le tournoi</button>
+  </div>
+
+  <!-- Step 2: Active Round & Matches -->
+  <div id="round-card" class="card hidden">
+    <h2 id="round-title">Tour 1 sur 7</h2>
+    
+    <div class="court-grid">
+      <!-- Terrain 1 -->
+      <div class="court">
+        <div class="court-header">
+          <span class="court-title">Terrain 1</span>
+          <div class="scores-row">
+            <input type="number" id="c1-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score')">
+            <input type="number" id="c1-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score')">
+          </div>
+        </div>
+        <div class="match-body">
+          <div class="team-side left">
+            <span class="player-name" id="c1-t1-p1"></span>
+            <span class="player-name" id="c1-t1-p2"></span>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="team-side right">
+            <span class="player-name" id="c1-t2-p1"></span>
+            <span class="player-name" id="c1-t2-p2"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terrain 2 -->
+      <div class="court">
+        <div class="court-header">
+          <span class="court-title">Terrain 2</span>
+          <div class="scores-row">
+            <input type="number" id="c2-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t2-score')">
+            <input type="number" id="c2-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t1-score')">
+          </div>
+        </div>
+        <div class="match-body">
+          <div class="team-side left">
+            <span class="player-name" id="c2-t1-p1"></span>
+            <span class="player-name" id="c2-t1-p2"></span>
+          </div>
+          <div class="vs-badge">VS</div>
+          <div class="team-side right">
+            <span class="player-name" id="c2-t2-p1"></span>
+            <span class="player-name" id="c2-t2-p2"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="error-message" class="error-msg"></div>
+
+    <div class="nav-buttons">
+      <button onclick="submitRound()">Enregistrer les scores & Tour suivant</button>
+    </div>
+  </div>
+
+  <!-- Step 3: Live Leaderboard -->
+  <div id="leaderboard-card" class="card hidden">
+    <h2>Classement en direct</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Rang</th>
+          <th>Joueur</th>
+          <th>Joué</th>
+          <th>W-T-L</th>
+          <th>Diff</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body"></tbody>
+    </table>
+    <p class="legend">W = Victoire • T = Match nul (8-8) • L = Défaite • Diff = Points marqués − Points encaissés</p>
+
+    <div class="actions-row" id="end-actions" style="display:none;">
+      <button onclick="saveCurrentTournament()">💾 Sauvegarder ce tournoi</button>
+      <button class="btn-secondary" onclick="startNewTournament()">Nouveau tournoi</button>
+    </div>
+  </div>
+
+  <!-- Step 4: Match History (current tournament) -->
+  <div id="history-card" class="card hidden">
+    <h2>Historique des matchs (tournoi en cours)</h2>
+    <div id="history-list" class="history-list"></div>
+  </div>
+
+  <!-- Step 5: Past Tournaments Archive -->
+  <div id="archive-card" class="card">
+    <h2>Historique des tournois sauvegardés</h2>
+
+    <!-- Combined Leaderboard -->
+    <div id="combined-leaderboard" style="margin-bottom: 24px;"></div>
+
+    <h2 style="font-size:1.1rem; margin-top:8px;">Détail par tournoi</h2>
+    <div id="archive-list"></div>
+    <div class="actions-row" style="margin-top:16px;">
+      <button class="btn-secondary" onclick="exportArchive()">Exporter (JSON)</button>
+      <button class="btn-secondary" onclick="document.getElementById('import-file').click()">Importer (JSON)</button>
+      <button class="btn-danger" onclick="clearArchive()">Effacer tout l'historique</button>
+    </div>
+    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importArchive(event)">
+  </div>
+
+  <script>
+    // Rotation issue de la grille fournie (lecture en colonnes)
+    // Americano complet : chaque joueur partenaire une seule fois avec chacun des 7 autres
+    const ROTATION_MATRIX = [
+      { c1: [[0, 2], [1, 3]], c2: [[4, 6], [5, 7]] }, // Tour 1
+      { c1: [[0, 1], [4, 5]], c2: [[2, 3], [6, 7]] }, // Tour 2
+      { c1: [[0, 3], [4, 7]], c2: [[2, 1], [6, 5]] }, // Tour 3
+      { c1: [[0, 4], [2, 6]], c2: [[1, 5], [3, 7]] }, // Tour 4
+      { c1: [[0, 6], [1, 7]], c2: [[2, 4], [3, 5]] }, // Tour 5
+      { c1: [[0, 5], [3, 6]], c2: [[2, 7], [1, 4]] }, // Tour 6
+      { c1: [[0, 7], [2, 5]], c2: [[1, 6], [3, 4]] }  // Tour 7
+    ];
+
+    let players = [];
+    let currentRound = 0;
+    let matchHistory = [];
+    let tournamentFinished = false;
+
+    // --- Persistence (localStorage) ---
+    // Structure: { tournaments: [...], knownPlayers: [...] }
+    const STORAGE_KEY = 'padel_americano_archive';
+
+    function loadData() {
+      try {
+        const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
+        if (!raw) return { tournaments: [], knownPlayers: [] };
+        // Compatibilité avec l'ancien format (tableau simple)
+        if (Array.isArray(raw)) {
+          return { tournaments: raw, knownPlayers: extractNamesFromTournaments(raw) };
+        }
+        return {
+          tournaments: raw.tournaments || [],
+          knownPlayers: raw.knownPlayers || extractNamesFromTournaments(raw.tournaments || [])
+        };
+      } catch {
+        return { tournaments: [], knownPlayers: [] };
+      }
+    }
+
+    function saveData(data) {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadArchive() {
+      return loadData().tournaments;
+    }
+
+    function saveArchive(tournaments) {
+      const data = loadData();
+      data.tournaments = tournaments;
+      // Mettre à jour les noms connus à partir des tournois
+      const namesFromTournaments = extractNamesFromTournaments(tournaments);
+      data.knownPlayers = mergeUniqueNames(data.knownPlayers, namesFromTournaments);
+      saveData(data);
+    }
+
+    function extractNamesFromTournaments(tournaments) {
+      const names = new Set();
+      tournaments.forEach(t => {
+        (t.ranking || []).forEach(p => {
+          if (p.name) names.add(p.name);
+        });
+      });
+      return Array.from(names);
+    }
+
+    function mergeUniqueNames(listA, listB) {
+      const set = new Set([...(listA || []), ...(listB || [])].map(n => n.trim()).filter(Boolean));
+      return Array.from(set).sort((a, b) => a.localeCompare(b, 'fr'));
+    }
+
+    function getKnownPlayers() {
+      return loadData().knownPlayers || [];
+    }
+
+    function addKnownPlayers(names) {
+      const data = loadData();
+      data.knownPlayers = mergeUniqueNames(data.knownPlayers, names);
+      saveData(data);
+    }
+
+    // --- UI generation ---
+    const setupInputs = document.getElementById('player-inputs');
+    for (let i = 0; i < 8; i++) {
+      setupInputs.innerHTML += `
+        <div class="input-group">
+          <label>Joueur ${i + 1}</label>
+          <input type="text" id="p${i}" value="Joueur ${i + 1}" autocomplete="off"
+                 onfocus="onNameFocus(this, ${i})"
+                 oninput="onNameInput(this, ${i})"
+                 onblur="onNameBlur(this, ${i})"
+                 onkeydown="onNameKeydown(event, ${i})">
+          <div class="suggestions" id="suggestions-${i}"></div>
+        </div>
+      `;
+    }
+
+    // Render archive on load
+    renderArchive();
+
+    // --- Autocomplétion des noms ---
+    let activeSuggestionIndex = -1;
+
+    function onNameFocus(el, idx) {
+      if (el.value === `Joueur ${idx + 1}`) {
+        el.value = '';
+      }
+      activeSuggestionIndex = -1;
+      showSuggestions(el, idx);
+    }
+
+    function onNameInput(el, idx) {
+      activeSuggestionIndex = -1;
+      showSuggestions(el, idx);
+    }
+
+    function onNameBlur(el, idx) {
+      // Petit délai pour laisser le temps au clic sur une suggestion
+      setTimeout(() => {
+        hideSuggestions(idx);
+        if (el.value.trim() === '') {
+          el.value = `Joueur ${idx + 1}`;
+        }
+      }, 180);
+    }
+
+    function onNameKeydown(e, idx) {
+      const box = document.getElementById(`suggestions-${idx}`);
+      const items = box.querySelectorAll('.suggestion-item');
+      if (!items.length || !box.classList.contains('show')) return;
+
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeSuggestionIndex = (activeSuggestionIndex + 1) % items.length;
+        updateActiveSuggestion(items);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeSuggestionIndex = (activeSuggestionIndex - 1 + items.length) % items.length;
+        updateActiveSuggestion(items);
+      } else if (e.key === 'Enter' && activeSuggestionIndex >= 0) {
+        e.preventDefault();
+        items[activeSuggestionIndex].click();
+      } else if (e.key === 'Escape') {
+        hideSuggestions(idx);
+      }
+    }
+
+    function updateActiveSuggestion(items) {
+      items.forEach((item, i) => {
+        item.classList.toggle('active', i === activeSuggestionIndex);
+      });
+    }
+
+    function showSuggestions(el, idx) {
+      const box = document.getElementById(`suggestions-${idx}`);
+      const query = el.value.trim().toLowerCase();
+      const known = getKnownPlayers();
+
+      if (!query) {
+        box.classList.remove('show');
+        box.innerHTML = '';
+        return;
+      }
+
+      // Filtrer les noms qui commencent par la saisie
+      const matches = known.filter(n => n.toLowerCase().startsWith(query) && n.toLowerCase() !== query);
+
+      // Afficher seulement s'il y a 2 propositions ou plus
+      if (matches.length < 2) {
+        box.classList.remove('show');
+        box.innerHTML = '';
+        return;
+      }
+
+      box.innerHTML = matches.slice(0, 8).map(name =>
+        `<div class="suggestion-item" onmousedown="selectSuggestion(${idx}, '${name.replace(/'/g, "\\'")}')">${name}</div>`
+      ).join('');
+      box.classList.add('show');
+    }
+
+    function selectSuggestion(idx, name) {
+      const el = document.getElementById(`p${idx}`);
+      el.value = name;
+      hideSuggestions(idx);
+      el.focus();
+    }
+
+    function hideSuggestions(idx) {
+      const box = document.getElementById(`suggestions-${idx}`);
+      box.classList.remove('show');
+      box.innerHTML = '';
+      activeSuggestionIndex = -1;
+    }
+
+    function startTournament() {
+      players = [];
+      matchHistory = [];
+      tournamentFinished = false;
+      currentRound = 0;
+
+      const names = [];
+      for (let i = 0; i < 8; i++) {
+        const name = document.getElementById(`p${i}`).value.trim() || `Joueur ${i + 1}`;
+        names.push(name);
+      }
+
+      // Vérifier que tous les noms sont uniques
+      const uniqueNames = new Set(names.map(n => n.toLowerCase()));
+      if (uniqueNames.size !== 8) {
+        alert('Tous les joueurs doivent avoir des noms différents. Merci de corriger les doublons.');
+        return;
+      }
+
+      // Enregistrer les noms dans la liste connue
+      addKnownPlayers(names);
+
+      for (let i = 0; i < 8; i++) {
+        players.push({
+          id: i, name: names[i], points: 0, played: 0,
+          wins: 0, ties: 0, losses: 0, diff: 0
+        });
+      }
+
+      document.getElementById('setup-card').classList.add('hidden');
+      document.getElementById('round-card').classList.remove('hidden');
+      document.getElementById('leaderboard-card').classList.remove('hidden');
+      document.getElementById('history-card').classList.remove('hidden');
+      document.getElementById('end-actions').style.display = 'none';
+
+      // Restore round-card content if it was replaced
+      document.getElementById('round-card').innerHTML = `
+        <h2 id="round-title">Tour 1 sur 7</h2>
+        <div class="court-grid">
+          <div class="court">
+            <div class="court-header">
+              <span class="court-title">Terrain 1</span>
+              <div class="scores-row">
+                <input type="number" id="c1-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score')">
+                <input type="number" id="c1-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score')">
+              </div>
+            </div>
+            <div class="match-body">
+              <div class="team-side left">
+                <span class="player-name" id="c1-t1-p1"></span>
+                <span class="player-name" id="c1-t1-p2"></span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team-side right">
+                <span class="player-name" id="c1-t2-p1"></span>
+                <span class="player-name" id="c1-t2-p2"></span>
+              </div>
+            </div>
+          </div>
+          <div class="court">
+            <div class="court-header">
+              <span class="court-title">Terrain 2</span>
+              <div class="scores-row">
+                <input type="number" id="c2-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t2-score')">
+                <input type="number" id="c2-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t1-score')">
+              </div>
+            </div>
+            <div class="match-body">
+              <div class="team-side left">
+                <span class="player-name" id="c2-t1-p1"></span>
+                <span class="player-name" id="c2-t1-p2"></span>
+              </div>
+              <div class="vs-badge">VS</div>
+              <div class="team-side right">
+                <span class="player-name" id="c2-t2-p1"></span>
+                <span class="player-name" id="c2-t2-p2"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="error-message" class="error-msg"></div>
+        <div class="nav-buttons">
+          <button onclick="submitRound()">Enregistrer les scores & Tour suivant</button>
+        </div>
+      `;
+
+      loadRound(0);
+      updateLeaderboard();
+      updateHistory();
+    }
+
+    function loadRound(roundIdx) {
+      currentRound = roundIdx;
+      document.getElementById('round-title').innerText = `Tour ${roundIdx + 1} sur 7`;
+      document.getElementById('error-message').innerText = '';
+
+      const rot = ROTATION_MATRIX[roundIdx];
+
+      // Terrain 1
+      document.getElementById('c1-t1-p1').innerText = players[rot.c1[0][0]].name;
+      document.getElementById('c1-t1-p2').innerText = players[rot.c1[0][1]].name;
+      document.getElementById('c1-t2-p1').innerText = players[rot.c1[1][0]].name;
+      document.getElementById('c1-t2-p2').innerText = players[rot.c1[1][1]].name;
+
+      // Terrain 2
+      document.getElementById('c2-t1-p1').innerText = players[rot.c2[0][0]].name;
+      document.getElementById('c2-t1-p2').innerText = players[rot.c2[0][1]].name;
+      document.getElementById('c2-t2-p1').innerText = players[rot.c2[1][0]].name;
+      document.getElementById('c2-t2-p2').innerText = players[rot.c2[1][1]].name;
+
+      ['c1-t1-score','c1-t2-score','c2-t1-score','c2-t2-score'].forEach(id => {
+        document.getElementById(id).value = '';
+      });
+    }
+
+    // Clamp score 0-16 + auto-balance
+    function handleScoreInput(el, targetId) {
+      let val = parseInt(el.value);
+      if (isNaN(val)) {
+        document.getElementById(targetId).value = '';
+        return;
+      }
+      if (val < 0) val = 0;
+      if (val > 16) val = 16;
+      el.value = val;
+      document.getElementById(targetId).value = 16 - val;
+    }
+
+    function applyMatchResult(playerIdx, scored, conceded) {
+      const p = players[playerIdx];
+      p.points += scored;
+      p.diff += (scored - conceded);
+      p.played++;
+      if (scored > conceded) p.wins++;
+      else if (scored === conceded) p.ties++;
+      else p.losses++;
+    }
+
+    function submitRound() {
+      const c1t1 = parseInt(document.getElementById('c1-t1-score').value);
+      const c1t2 = parseInt(document.getElementById('c1-t2-score').value);
+      const c2t1 = parseInt(document.getElementById('c2-t1-score').value);
+      const c2t2 = parseInt(document.getElementById('c2-t2-score').value);
+
+      if (isNaN(c1t1) || isNaN(c1t2) || isNaN(c2t1) || isNaN(c2t2) ||
+          (c1t1 + c1t2 !== 16) || (c2t1 + c2t2 !== 16)) {
+        document.getElementById('error-message').innerText = 'Veuillez saisir des scores qui totalisent exactement 16 points sur chaque terrain.';
+        return;
+      }
+
+      const rot = ROTATION_MATRIX[currentRound];
+
+      applyMatchResult(rot.c1[0][0], c1t1, c1t2);
+      applyMatchResult(rot.c1[0][1], c1t1, c1t2);
+      applyMatchResult(rot.c1[1][0], c1t2, c1t1);
+      applyMatchResult(rot.c1[1][1], c1t2, c1t1);
+
+      applyMatchResult(rot.c2[0][0], c2t1, c2t2);
+      applyMatchResult(rot.c2[0][1], c2t1, c2t2);
+      applyMatchResult(rot.c2[1][0], c2t2, c2t1);
+      applyMatchResult(rot.c2[1][1], c2t2, c2t1);
+
+      matchHistory.push({
+        round: currentRound + 1,
+        matches: [
+          {
+            team1: `${players[rot.c1[0][0]].name} & ${players[rot.c1[0][1]].name}`,
+            score1: c1t1,
+            team2: `${players[rot.c1[1][0]].name} & ${players[rot.c1[1][1]].name}`,
+            score2: c1t2
+          },
+          {
+            team1: `${players[rot.c2[0][0]].name} & ${players[rot.c2[0][1]].name}`,
+            score1: c2t1,
+            team2: `${players[rot.c2[1][0]].name} & ${players[rot.c2[1][1]].name}`,
+            score2: c2t2
+          }
+        ]
+      });
+
+      updateLeaderboard();
+      updateHistory();
+
+      if (currentRound < 6) {
+        loadRound(currentRound + 1);
+      } else {
+        tournamentFinished = true;
+        document.getElementById('round-card').innerHTML = '<h2 style="text-align:center; color: var(--accent);">🏆 Tournoi terminé ! 🏆</h2>';
+        document.getElementById('end-actions').style.display = 'flex';
+      }
+    }
+
+    function updateLeaderboard() {
+      const sorted = [...players].sort((a, b) => {
+        if (b.points !== a.points) return b.points - a.points;
+        if (b.diff !== a.diff) return b.diff - a.diff;
+        return b.wins - a.wins;
+      });
+
+      const tbody = document.getElementById('leaderboard-body');
+      tbody.innerHTML = '';
+
+      sorted.forEach((player, index) => {
+        const rankClass = index === 0 ? 'rank-1' : index === 1 ? 'rank-2' : index === 2 ? 'rank-3' : '';
+        const diffStr = player.diff > 0 ? `+${player.diff}` : `${player.diff}`;
+        tbody.innerHTML += `
+          <tr class="${rankClass}">
+            <td>#${index + 1}</td>
+            <td>${player.name}</td>
+            <td>${player.played} / 7</td>
+            <td>${player.wins}-${player.ties}-${player.losses}</td>
+            <td>${diffStr}</td>
+            <td>${player.points} pts</td>
+          </tr>
+        `;
+      });
+    }
+
+    function updateHistory() {
+      const container = document.getElementById('history-list');
+      if (matchHistory.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Aucun match joué pour le moment.</p>';
+        return;
+      }
+
+      const reversed = [...matchHistory].reverse();
+      container.innerHTML = reversed.map(r => `
+        <div class="history-round">
+          <h3>Tour ${r.round}</h3>
+          ${r.matches.map(m => `
+            <div class="history-match">
+              <span class="team-left">${m.team1}</span>
+              <span class="score-badge">${m.score1} - ${m.score2}</span>
+              <span class="team-right">${m.team2}</span>
+            </div>
+          `).join('')}
+        </div>
+      `).join('');
+    }
+
+    // --- Save / Archive ---
+    function saveCurrentTournament() {
+      if (!tournamentFinished && matchHistory.length === 0) {
+        alert('Aucun tournoi à sauvegarder.');
+        return;
+      }
+
+      const sorted = [...players].sort((a, b) => {
+        if (b.points !== a.points) return b.points - a.points;
+        if (b.diff !== a.diff) return b.diff - a.diff;
+        return b.wins - a.wins;
+      });
+
+      const tournament = {
+        id: Date.now(),
+        date: new Date().toLocaleString('fr-FR'),
+        ranking: sorted.map((p, i) => ({
+          rank: i + 1,
+          name: p.name,
+          points: p.points,
+          wins: p.wins,
+          ties: p.ties,
+          losses: p.losses,
+          diff: p.diff
+        })),
+        matchHistory: matchHistory
+      };
+
+      const archive = loadArchive();
+      archive.unshift(tournament); // newest first
+      saveArchive(archive);
+      renderArchive();
+      alert('Tournoi sauvegardé avec succès !');
+    }
+
+    function renderArchive() {
+      const archive = loadArchive();
+      const container = document.getElementById('archive-list');
+      const combinedContainer = document.getElementById('combined-leaderboard');
+
+      if (archive.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Aucun tournoi sauvegardé pour le moment.</p>';
+        combinedContainer.innerHTML = '';
+        return;
+      }
+
+      // --- Combined Leaderboard across all tournaments ---
+      const stats = {};
+      archive.forEach(t => {
+        t.ranking.forEach(p => {
+          if (!stats[p.name]) {
+            stats[p.name] = { name: p.name, tournaments: 0, points: 0, wins: 0, ties: 0, losses: 0, diff: 0, firsts: 0, seconds: 0, thirds: 0 };
+          }
+          const s = stats[p.name];
+          s.tournaments++;
+          s.points += p.points;
+          s.wins += p.wins;
+          s.ties += p.ties;
+          s.losses += p.losses;
+          s.diff += p.diff;
+          if (p.rank === 1) s.firsts++;
+          if (p.rank === 2) s.seconds++;
+          if (p.rank === 3) s.thirds++;
+        });
+      });
+
+      const combined = Object.values(stats).sort((a, b) => {
+        if (b.points !== a.points) return b.points - a.points;
+        if (b.diff !== a.diff) return b.diff - a.diff;
+        return b.wins - a.wins;
+      });
+
+      combinedContainer.innerHTML = `
+        <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.1rem;">Classement combiné (tous les tournois)</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Rang</th>
+              <th>Joueur</th>
+              <th>Tournois</th>
+              <th>🥇</th>
+              <th>🥈</th>
+              <th>🥉</th>
+              <th>W-T-L</th>
+              <th>Diff</th>
+              <th>Points</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${combined.map((p, i) => {
+              const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
+              const diffStr = p.diff > 0 ? `+${p.diff}` : `${p.diff}`;
+              return `
+                <tr class="${rankClass}">
+                  <td>#${i + 1}</td>
+                  <td>${p.name}</td>
+                  <td>${p.tournaments}</td>
+                  <td>${p.firsts}</td>
+                  <td>${p.seconds}</td>
+                  <td>${p.thirds}</td>
+                  <td>${p.wins}-${p.ties}-${p.losses}</td>
+                  <td>${diffStr}</td>
+                  <td>${p.points} pts</td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+        <p class="legend" style="margin-bottom: 8px;">Points, Diff, W-T-L = cumulés sur tous les tournois sauvegardés</p>
+      `;
+
+      // --- Detail per tournament (unchanged) ---
+      container.innerHTML = archive.map(t => `
+        <div class="past-tournament">
+          <h3>
+            <span>Tournoi du ${t.date}</span>
+            <button class="btn-secondary" style="width:auto;padding:4px 10px;font-size:0.8rem;" onclick="deleteTournament(${t.id})">Supprimer</button>
+          </h3>
+          ${t.ranking.slice(0, 8).map((p, i) => {
+            const cls = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+            const diffStr = p.diff > 0 ? `+${p.diff}` : p.diff;
+            return `
+              <div class="mini-rank ${cls}">
+                <span><span class="pos">#${p.rank}</span> <span class="name">${p.name}</span></span>
+                <span>${p.points} pts • ${p.wins}-${p.ties}-${p.losses} • Diff ${diffStr}</span>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `).join('');
+    }
+
+    function deleteTournament(id) {
+      if (!confirm('Supprimer ce tournoi de l\'historique ?')) return;
+      let archive = loadArchive();
+      archive = archive.filter(t => t.id !== id);
+      saveArchive(archive);
+      renderArchive();
+    }
+
+    function clearArchive() {
+      if (!confirm('Effacer TOUT l\'historique des tournois et la liste des joueurs connus ? Cette action est irréversible.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      renderArchive();
+    }
+
+    function exportArchive() {
+      const data = loadData();
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `padel-americano-historique-${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importArchive(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const imported = JSON.parse(e.target.result);
+          const current = loadData();
+
+          let importedTournaments = [];
+          let importedPlayers = [];
+
+          // Nouveau format { tournaments, knownPlayers }
+          if (imported && !Array.isArray(imported) && imported.tournaments) {
+            importedTournaments = imported.tournaments || [];
+            importedPlayers = imported.knownPlayers || [];
+          }
+          // Ancien format (tableau de tournois)
+          else if (Array.isArray(imported)) {
+            importedTournaments = imported;
+            importedPlayers = extractNamesFromTournaments(imported);
+          } else {
+            throw new Error('Format invalide');
+          }
+
+          // Fusionner les tournois (éviter les doublons d'id)
+          const existingIds = new Set(current.tournaments.map(t => t.id));
+          const newOnes = importedTournaments.filter(t => !existingIds.has(t.id));
+
+          const mergedTournaments = [...newOnes, ...current.tournaments];
+          const mergedPlayers = mergeUniqueNames(
+            current.knownPlayers,
+            mergeUniqueNames(importedPlayers, extractNamesFromTournaments(mergedTournaments))
+          );
+
+          saveData({
+            tournaments: mergedTournaments,
+            knownPlayers: mergedPlayers
+          });
+
+          renderArchive();
+          alert(`${newOnes.length} tournoi(s) importé(s).\n${mergedPlayers.length} joueur(s) connus au total.`);
+        } catch {
+          alert('Fichier JSON invalide.');
+        }
+      };
+      reader.readAsText(file);
+      event.target.value = '';
+    }
+
+    function startNewTournament() {
+      if (!confirm('Commencer un nouveau tournoi ? Les scores du tournoi en cours seront perdus s\'ils ne sont pas sauvegardés.')) return;
+      document.getElementById('setup-card').classList.remove('hidden');
+      document.getElementById('round-card').classList.add('hidden');
+      document.getElementById('leaderboard-card').classList.add('hidden');
+      document.getElementById('history-card').classList.add('hidden');
+      document.getElementById('end-actions').style.display = 'none';
+      // Reset name fields to defaults
+      for (let i = 0; i < 8; i++) {
+        document.getElementById(`p${i}`).value = `Joueur ${i + 1}`;
+      }
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Padel Americano Tracker (8 Joueurs - 16 Pts)</title>
+
+  <!-- Favicon navigateur (balle jaune sur fond bleu) - intégré -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23ffffff%22%2F%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2247%22%20r%3D%2240%22%20fill%3D%22%231e40af%22%2F%3E%3Cpath%20d%3D%22M30%2016C10%2032%2010%2062%2030%2078%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cpath%20d%3D%22M70%2016C90%2032%2090%2062%2070%2078%22%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-width%3D%2210%22%20stroke-linecap%3D%22round%22%2F%3E%3Cellipse%20cx%3D%2250%22%20cy%3D%2291%22%20rx%3D%2224%22%20ry%3D%223.5%22%20fill%3D%22%23e2e8f0%22%2F%3E%3C%2Fsvg%3E" type="image/svg+xml">
   <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAAxUlEQVR4nO1VMQ7DIAx0ouwdO1V5S37AU/MD3oI6dewLyICEkAn2VUCQot6Gse/wmYTJe089MXdlJ6IFzFu3nUWcNUgh1EHOXgrmmPAZpIzg8YsC7HSRLsTZUlY9ESj17qxZtz2wCDksgg45koLWR/Ah/1qvls/ydr1G9w/tQoEm/uRUd7LoLzBeAP8Dq0ip7mQRNXKJkfAOBI2w5axRc1KMeDJLaPnoM7w/39P46/moFShR4zLSNUXY1TRJAHFATRs9g3oc9rdtLf6eIH0AAAAASUVORK5CYII=" type="image/png" sizes="32x32">
 
