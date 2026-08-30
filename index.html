@@ -3,14 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Padel Americano Tracker (8 Joueurs - 16 Pts)</title>
+  <title>Padel Americano Tracker (8 &amp; 5 Joueurs - 16 Pts)</title>
 
-  <!-- Favicon navigateur (balle jaune sur fond bleu) - intégré -->
   <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20fill%3D%22%23ffffff%22%2F%3E%3Crect%20x%3D%220.5%22%20y%3D%220.5%22%20width%3D%2299%22%20height%3D%2299%22%20fill%3D%22none%22%20stroke%3D%22%23e2e8f0%22%20stroke-width%3D%221%22%2F%3E%3Ctext%20x%3D%2250%22%20y%3D%2254%22%20text-anchor%3D%22middle%22%20dominant-baseline%3D%22middle%22font-family%3D%22Arial%2C%20Helvetica%2C%20sans-serif%22%20font-weight%3D%22700%22font-size%3D%2214%22%20fill%3D%22%231e40af%22%3EAMERICANO%3C%2Ftext%3E%3C%2Fsvg%3E" type="image/svg+xml">
-  <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAABgElEQVR4nGN89OIDAy0BCwMDg6w4P41Mf/zyIxONjIaDUQtGLRi1YNQCIi3IajzNwMDQMv2KfczuP3//W0fu6pl7vWX6FXnHDfKOGyAMw4Bt9x5/aZl+Zcmm+9fvfXJO2Kvnt/XUpbcMDAw+6QfgJoQXHLl5/1Nc2bFLNz/YRe9mgJSmpy69/f7zLwMDAx8Pa/2kSyIC7HD7RQShbE4OFkkxTgh7yuKbMX4KCYHKjIwMj59/+/bjL9yEZ6++n7nyjoGBYfryW0nBylAf6GsI7D3+goGBIcxTftfR50FushCDWgv1z67zZGBgaMjVFRZgu3H3I0T8PwMDIwMjhL15/xM7EzG4CYnBSgvW3YVIMTLCgmjPsRdb9j9lYGDg52U9vcaDi5MFoqK6/6K844Y/f/6zsjCFesit3/MEIp4bo7Zwwz1d362nLr3deuDZ/HV34SaICLJbGYkyMDBkRqrNWX2XgYGB8dGLD6MVzqgFoxaMWjDsLWBhYGB4/PIj7SwAAJKxmVfwJn7FAAAAAElFTkSuQmCC" type="image/png" sizes="32x32">
 
-  <!-- Apple Touch Icon (Ajouter à l'écran d'accueil iOS) - intégré -->
-  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAALOUlEQVR4nO3afXATdR7H8V/SpGnTJ/oAfUihLaW2BSpiUUSeWh6FAlVUDrWAqHM6w+Ggnnc+TT1RkTlAAQfEDnii5Q4VChQQLLVQLVx5FOmTgn0ifUihhLZpQpukyf2xdbNN8k22DwzOzec1zJCsu9vNj3d2f7tVclXTwgCckd7pA4A/Lhn319DQgDt7HPCHom5qZThzgAuIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iIA0iyvm2WsiS/uq6df5uWotr69n1O1xz/+FFNcwf/NjE24Oj2VLt1zGbLA3/Ku661rTZudPDejydTO3E0NjFw/9apLlb2UngM8pOPiPJLHR/2RFqUj9L+gwu3ylyR9OxjsY4/RX/LvO+Yuuj89dIrLdpWY2dnl7+vPCbS9/67g+elqkbHDXJ6bCLHSngAEgk7uC0l6a4eO4yblWs0WbjXhdkzo1U+jjtRNxq+OlJbfLG5pl7f0mZUeEpDAhVjEgKnTwhLS1HJPCROj5DSlzgulGmFn5Yxln9Ko9Ob/HzkbretqGw9X6ZNHhUkXPjtDw3CMm6Hjs4uTWeXprmj6Pz1HXt+2/3RpKgIJ4Prwu7DtWs+LW3VmYQLta1Gbav2fJn2k/9c+ej15IWzhtpt1bexslrZuu3lX/zzQfGHZzZbPsgq+zynytxl5ReazJZ2g7mmXn/g+7r1Oyo2vZl8b8+Rd60vl5WcY2q7JZ3GrkPH60Vu/uWBardLbquGa7cyN13q1SaZmy/9ff1PdmXYMXSYHRf2eawKz147femGyMMzd1mfeaN4+zeVwjLsXG3UL1pVdPx0k8h9sj6cOUxmy8ECJ58t55j6iXnRYvZw+ER95oqkoABP7u3lGt0Z0aPA6HO+i5WNJkvlVd3rH/78U7mWW/7juWtGk8VTLuq78cX+qp37qvi3YSFeLy5NSB0fOjhI0aoznS25kZ1bXXT+uuOG/RyrddvL92ye7HY1xtj6HeWFZ6/xb6c9ELZqWXzCcP92g/nYSc3arLKbbUbueFa+ey7vs2kRQ7zF7LbXZ47v/6tp0Rm512MTAwP8uk+PZ0tuqBsNrreVy6SMMaPJ8vWRWn7hF/urhP/1dvCUSxNjA1Yti+eXdFms+ltOvuiOdHrT+s8q+LdRET6HPk15an50xBBvuUwaEqiYMyVi1/qJn/zjfn9f+ytFf8aKW03MF/26tuOzvbZ2p08I27Fm/JiEQIWnR/AgxeK0qH9vmMiPrU5v2rLrstt9cnr975GTZztPps+InDUxnHtttbJ9DqdQO3OmRHAvsnOrLVYrY0x/y8yfeOdOjejtwfSO4Izro5QF+nuK2ejwiQbh1eSDV+4ZHOTluNrcqRELpkXaLezzWIUP7v5mr9tRbiUvFN0OnajvNHbxbzNXJEklPSaeI0cELJozjH+7P1/dZXG3U8ZYb+No0RkLirtblkjYnCmqtBQV/18dr692Fs0Z5qXwYIypGw2FZ64xxvbmqfUGM2MsLMRrxoNhYo5h9ZaSqNT9dn9yC+pcbGI0WSqq2jbu/IVfsnhulJifxRg7ecF2vVCFKifeO1jkhv0ZqxeXxnP/vmVXWr8tdDNBOf2z7aIcH+Pv9C5m9mTbF6/dYC7/rdX9B+htHLnf15nM3XdTyaOCw0K8JiUP5k+n1XXt/EXdqQA/z/mp3QPETUKzf5+KPjEvWuYx8JcVrqS4WbkPPVvwU8VNbuHsSeF/e26kyD2oNbbz/+i7AsT/6P6M1ei4QfxZdsO/fnH9RW+8dot/PSLKz+k6sUN9hW8bBJu40Lt/D+F5Mi0lgjEml0n5s6XdCk4tfXg49+J4cVNOnvrX6jbGmMxDInIy208SCXvtz6Oy3h3PncDEaGu3XVP8lO7v1Xn9HKu/PpPoIZUwxiqv6vZ+52pNncE2eVJ6Of9cSu8edx46vavbLl4v4qiqa+e/fBKJbQLBfXLOweP1/NfFqbvjB41JCGSMWazW1zZc5BbOmhQeGuzkQu5U5oqk2uMP2/1xvN47ZbWytVlln+6+IvJnMcaE00ydQdSYsoEYq9hhfvxTk407f3Gxpp/ggZ6ho8vpOoaes28xT6RYr+LIEfQ7dmQQP2maPG4I/8NuttkutJQl6THcC34atTR9uPjD6JXMFUnVBemF2TOnT7BNaNZmlZ8vc3X5E4oMtd31lV4WdalmAzRWLz2dwN1l1DcZduXWUKuFDbYdYeVVndN1KtU9HsQN8K2s1cr25ds+8IUyLT8ZHDEzV3iacntlWTBNNcjPdqcQO8xvwtgQkYfRB1KJJFrls+2d+/lHohardc22MpGbC2eg9U0G4fyUMlBjpQpVPrUgmnv9cfav1MTjgXuC+de/VrfVNugd18krauRf+yplI0eImjyJjeP0peY6jftbc9bz5t4phafH44I7qyXp0SKPoT885dKXlyfwb8+V3hD55C0tRcU/n2CMvb7hotMn/Ud+aODvmAZwrFZmxHPTiOabnWbiypI2VaXw7J5qWK3sva2ldne/FVVtwgdL6dMjudmMW2LjcD0nEjKZLW4fDy9Jj+Fu1bwVHo/NHuZ65YEyLzUyXHAG3v7Nb2K28veVv7I8kX9b26Cf9/yJXQdrGq/fMpstzTc7j/7YkPHqqRfePsNPXQdwrEICFcsfdfM4eEiw1/KFtuty3snG594qLrncYjRZtK3Gr4/UPvlyEf8bO1+l7C8Z8cSe7Il6fN5p7BLebW9+a1z6dPsJ4PvbSrO+6h7uvXnqjAUxLnYYFeFTU/CwyEO0s3pLyeotJY7LL383n/8COSXzkCx7ZPjarO4LyrGTmpp6vdOnAnaWPTL8Sq2O/wWQprnjjQ8vUisP+Fi9sDjuywPVwpsmR68+N7L0Sgv/CD//lCb/lMZxNZlMuunNcSInHEzkmeO7osb23++XfLxlsyaFO67zyAzbLyQvlGlr6p1c+e64J+dF8zd7Fqt1x55KkRu+t2rM+y+NcXxALqT0krHbMFb+vvLnF8e5PjyZh+TztROeXjjcxfUiMky5+8OJIp80ckTFIZw3PTQ53NvZQ4KRIwLiBE9g3E5L74gAP7nwKrbnaK3rX7QKZSyIKf5q9rurxsyeHB4ZpvTxlsk8JIH+nveOCnphcdzhrBTuzvN2jNUzj8aGBCpcryOXSd9ZefeJ7BkrM+KTRwWFBCpkMqmPUjYs3Gd+qmrjG8mF2TPvSwp2vRM7kquaFsbY0NBePPuD/3vqplaG/00QXEAcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQEIcQJJxf6mbWu/sccAfEM4cQPofn8cvc0e4lqwAAAAASUVORK5CYII=">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Americano">
@@ -38,12 +34,41 @@
     body { background-color: var(--bg-color); color: var(--text); padding: 16px; max-width: 960px; margin: 0 auto; }
     
     h1 { text-align: center; color: var(--court-bg); margin-bottom: 8px; font-size: 1.8rem; }
-    p.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 24px; font-size: 0.95rem; }
+    p.subtitle { text-align: center; color: var(--text-muted); margin-bottom: 16px; font-size: 0.95rem; }
+
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card-bg);
+    }
+    .tab-btn {
+      flex: 1;
+      padding: 12px 8px;
+      border: none;
+      background: transparent;
+      color: var(--text-muted);
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-bottom: 3px solid transparent;
+    }
+    .tab-btn:hover { background: #f8fafc; color: var(--text); }
+    .tab-btn.active {
+      color: var(--court-bg);
+      border-bottom-color: var(--court-bg);
+      background: #eff6ff;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
 
     .card { background: var(--card-bg); border-radius: 12px; padding: 20px; margin-bottom: 20px; border: 1px solid var(--border); box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
     h2 { font-size: 1.25rem; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px; color: var(--court-bg); }
 
-    /* Setup Section */
     .grid-setup { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 16px; }
     .input-group { display: flex; flex-direction: column; gap: 4px; position: relative; }
     label { font-size: 0.85rem; color: var(--text-muted); }
@@ -86,7 +111,6 @@
     button:hover { background: var(--accent-hover); }
     button:disabled { background: #94a3b8; cursor: not-allowed; }
 
-    /* Courts Section */
     .court-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 16px; }
     .court {
       background: var(--court-bg);
@@ -171,7 +195,18 @@
       color: #0f172a;
     }
 
-    /* Leaderboard Table */
+    .waiting-box {
+      background: #fef3c7;
+      border: 1px solid #f59e0b;
+      border-radius: 10px;
+      padding: 12px 16px;
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: #92400e;
+    }
+    .waiting-box span { color: #b45309; }
+
     table { width: 100%; border-collapse: collapse; text-align: left; }
     th, td { padding: 10px 8px; border-bottom: 1px solid var(--border); font-size: 0.95rem; }
     th { color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; }
@@ -183,7 +218,6 @@
     tr.rank-3 { background: linear-gradient(90deg, rgba(249, 115, 22, 0.12), transparent); }
     tr.rank-3 td { color: var(--bronze); font-weight: bold; }
 
-    /* History */
     .history-list { display: flex; flex-direction: column; gap: 12px; max-height: 420px; overflow-y: auto; }
     .history-round { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 12px; }
     .history-round h3 { font-size: 0.95rem; color: var(--court-bg); margin-bottom: 8px; }
@@ -210,10 +244,16 @@
       border-radius: 6px;
     }
 
-    /* Past tournaments */
     .past-tournament { background: #f8fafc; border: 1px solid var(--border); border-radius: 8px; padding: 14px; margin-bottom: 12px; }
-    .past-tournament h3 { font-size: 1rem; color: var(--court-bg); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
-    .past-tournament .date { font-size: 0.8rem; color: var(--text-muted); font-weight: normal; }
+    .past-tournament h3 { font-size: 1rem; color: var(--court-bg); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .type-badge {
+      font-size: 0.75rem;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+    .type-badge.type-8 { background: #dbeafe; color: #1e40af; }
+    .type-badge.type-5 { background: #fef3c7; color: #92400e; }
     .mini-rank { font-size: 0.85rem; display: flex; justify-content: space-between; padding: 3px 0; color: var(--text); }
     .mini-rank .pos { width: 28px; color: var(--text-muted); }
     .mini-rank.gold .name { color: var(--gold); font-weight: bold; }
@@ -230,151 +270,236 @@
     .legend { font-size: 0.8rem; color: var(--text-muted); margin-top: 12px; text-align: center; }
     .actions-row { display: flex; gap: 10px; margin-top: 16px; flex-wrap: wrap; }
     .actions-row button { flex: 1; min-width: 140px; }
+
+    .fip-table-wrap { overflow-x: auto; }
+    .fip-table-wrap table { min-width: 720px; }
   </style>
 </head>
 <body>
 
   <h1>Padel Americano</h1>
-  <p class="subtitle">8 Joueurs • 2 Terrains • 16 Points par Match</p>
+  <p class="subtitle" id="main-subtitle">Choisissez le mode • 16 Points par Match</p>
 
-  <!-- Step 1: Player Setup -->
-  <div id="setup-card" class="card">
-    <h2>Entrer les noms des joueurs</h2>
-    <div class="grid-setup" id="player-inputs"></div>
-    <button onclick="startTournament()">Démarrer le tournoi</button>
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="8" onclick="switchTab('8')">Americano à 8</button>
+    <button class="tab-btn" data-tab="5" onclick="switchTab('5')">Americano à 5</button>
+    <button class="tab-btn" data-tab="fip" onclick="switchTab('fip')">FIP Ranking</button>
   </div>
 
-  <!-- Step 2: Active Round & Matches -->
-  <div id="round-card" class="card hidden">
-    <h2 id="round-title">Tour 1 sur 7</h2>
-    
-    <div class="court-grid">
-      <!-- Terrain 1 -->
-      <div class="court">
-        <div class="court-header">
-          <span class="court-title">Terrain 1</span>
-          <div class="scores-row">
-            <input type="number" id="c1-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score')">
-            <input type="number" id="c1-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score')">
+  <!-- PANEL 8 -->
+  <div id="panel-8" class="tab-panel active">
+    <div id="setup-card-8" class="card">
+      <h2>Entrer les noms des 8 joueurs</h2>
+      <div class="grid-setup" id="player-inputs-8"></div>
+      <button onclick="startTournament(8)">Démarrer le tournoi (8 joueurs)</button>
+    </div>
+
+    <div id="round-card-8" class="card hidden">
+      <h2 id="round-title-8">Tour 1 sur 7</h2>
+      <div class="court-grid" id="courts-8">
+        <div class="court">
+          <div class="court-header">
+            <span class="court-title">Terrain 1</span>
+            <div class="scores-row">
+              <input type="number" id="c1-t1-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score-8')">
+              <input type="number" id="c1-t2-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score-8')">
+            </div>
+          </div>
+          <div class="match-body">
+            <div class="team-side left">
+              <span class="player-name" id="c1-t1-p1-8"></span>
+              <span class="player-name" id="c1-t1-p2-8"></span>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="team-side right">
+              <span class="player-name" id="c1-t2-p1-8"></span>
+              <span class="player-name" id="c1-t2-p2-8"></span>
+            </div>
           </div>
         </div>
-        <div class="match-body">
-          <div class="team-side left">
-            <span class="player-name" id="c1-t1-p1"></span>
-            <span class="player-name" id="c1-t1-p2"></span>
+        <div class="court">
+          <div class="court-header">
+            <span class="court-title">Terrain 2</span>
+            <div class="scores-row">
+              <input type="number" id="c2-t1-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t2-score-8')">
+              <input type="number" id="c2-t2-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t1-score-8')">
+            </div>
           </div>
-          <div class="vs-badge">VS</div>
-          <div class="team-side right">
-            <span class="player-name" id="c1-t2-p1"></span>
-            <span class="player-name" id="c1-t2-p2"></span>
+          <div class="match-body">
+            <div class="team-side left">
+              <span class="player-name" id="c2-t1-p1-8"></span>
+              <span class="player-name" id="c2-t1-p2-8"></span>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="team-side right">
+              <span class="player-name" id="c2-t2-p1-8"></span>
+              <span class="player-name" id="c2-t2-p2-8"></span>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Terrain 2 -->
-      <div class="court">
-        <div class="court-header">
-          <span class="court-title">Terrain 2</span>
-          <div class="scores-row">
-            <input type="number" id="c2-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t2-score')">
-            <input type="number" id="c2-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t1-score')">
-          </div>
-        </div>
-        <div class="match-body">
-          <div class="team-side left">
-            <span class="player-name" id="c2-t1-p1"></span>
-            <span class="player-name" id="c2-t1-p2"></span>
-          </div>
-          <div class="vs-badge">VS</div>
-          <div class="team-side right">
-            <span class="player-name" id="c2-t2-p1"></span>
-            <span class="player-name" id="c2-t2-p2"></span>
-          </div>
-        </div>
+      <div id="error-message-8" class="error-msg"></div>
+      <div class="nav-buttons">
+        <button onclick="submitRound(8)">Enregistrer les scores & Tour suivant</button>
       </div>
     </div>
 
-    <div id="error-message" class="error-msg"></div>
+    <div id="leaderboard-card-8" class="card hidden">
+      <h2>Classement en direct (8 joueurs)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rang</th><th>Joueur</th><th>Joué</th><th>W-T-L</th><th>Diff</th><th>Points</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body-8"></tbody>
+      </table>
+      <p class="legend">W = Victoire • T = Match nul (8-8) • L = Défaite • Diff = Points marqués − Points encaissés</p>
+      <div class="actions-row" id="end-actions-8" style="display:none;">
+        <button onclick="saveCurrentTournament(8)">💾 Sauvegarder ce tournoi</button>
+        <button class="btn-secondary" onclick="startNewTournament(8)">Nouveau tournoi</button>
+      </div>
+    </div>
 
-    <div class="nav-buttons">
-      <button onclick="submitRound()">Enregistrer les scores & Tour suivant</button>
+    <div id="history-card-8" class="card hidden">
+      <h2>Historique des matchs (tournoi en cours)</h2>
+      <div id="history-list-8" class="history-list"></div>
+    </div>
+
+    <div id="archive-card-8" class="card">
+      <h2>Historique des tournois à 8 joueurs</h2>
+      <div id="archive-list-8"></div>
+      <div class="actions-row" style="margin-top:16px;">
+        <button class="btn-secondary" onclick="exportArchive()">Exporter (JSON)</button>
+        <button class="btn-secondary" onclick="document.getElementById('import-file').click()">Importer (JSON)</button>
+        <button class="btn-danger" onclick="clearArchive()">Effacer tout l'historique</button>
+      </div>
     </div>
   </div>
 
-  <!-- Step 3: Live Leaderboard -->
-  <div id="leaderboard-card" class="card hidden">
-    <h2>Classement en direct</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>Rang</th>
-          <th>Joueur</th>
-          <th>Joué</th>
-          <th>W-T-L</th>
-          <th>Diff</th>
-          <th>Points</th>
-        </tr>
-      </thead>
-      <tbody id="leaderboard-body"></tbody>
-    </table>
-    <p class="legend">W = Victoire • T = Match nul (8-8) • L = Défaite • Diff = Points marqués − Points encaissés</p>
+  <!-- PANEL 5 -->
+  <div id="panel-5" class="tab-panel">
+    <div id="setup-card-5" class="card">
+      <h2>Entrer les noms des 5 joueurs</h2>
+      <div class="grid-setup" id="player-inputs-5"></div>
+      <button onclick="startTournament(5)">Démarrer le tournoi (5 joueurs)</button>
+    </div>
 
-    <div class="actions-row" id="end-actions" style="display:none;">
-      <button onclick="saveCurrentTournament()">💾 Sauvegarder ce tournoi</button>
-      <button class="btn-secondary" onclick="startNewTournament()">Nouveau tournoi</button>
+    <div id="round-card-5" class="card hidden">
+      <h2 id="round-title-5">Tour 1 sur 5</h2>
+      <div id="waiting-box-5" class="waiting-box">Joueur en attente : <span id="waiting-player-5">—</span></div>
+      <div class="court-grid" id="courts-5">
+        <div class="court">
+          <div class="court-header">
+            <span class="court-title">Terrain unique</span>
+            <div class="scores-row">
+              <input type="number" id="c1-t1-score-5" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score-5')">
+              <input type="number" id="c1-t2-score-5" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score-5')">
+            </div>
+          </div>
+          <div class="match-body">
+            <div class="team-side left">
+              <span class="player-name" id="c1-t1-p1-5"></span>
+              <span class="player-name" id="c1-t1-p2-5"></span>
+            </div>
+            <div class="vs-badge">VS</div>
+            <div class="team-side right">
+              <span class="player-name" id="c1-t2-p1-5"></span>
+              <span class="player-name" id="c1-t2-p2-5"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="error-message-5" class="error-msg"></div>
+      <div class="nav-buttons">
+        <button onclick="submitRound(5)">Enregistrer les scores & Tour suivant</button>
+      </div>
+    </div>
+
+    <div id="leaderboard-card-5" class="card hidden">
+      <h2>Classement en direct (5 joueurs)</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Rang</th><th>Joueur</th><th>Joué</th><th>W-T-L</th><th>Diff</th><th>Points</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboard-body-5"></tbody>
+      </table>
+      <p class="legend">W = Victoire • T = Match nul (8-8) • L = Défaite • Diff = Points marqués − Points encaissés</p>
+      <div class="actions-row" id="end-actions-5" style="display:none;">
+        <button onclick="saveCurrentTournament(5)">💾 Sauvegarder ce tournoi</button>
+        <button class="btn-secondary" onclick="startNewTournament(5)">Nouveau tournoi</button>
+      </div>
+    </div>
+
+    <div id="history-card-5" class="card hidden">
+      <h2>Historique des matchs (tournoi en cours)</h2>
+      <div id="history-list-5" class="history-list"></div>
+    </div>
+
+    <div id="archive-card-5" class="card">
+      <h2>Historique des tournois à 5 joueurs</h2>
+      <div id="archive-list-5"></div>
+      <div class="actions-row" style="margin-top:16px;">
+        <button class="btn-secondary" onclick="exportArchive()">Exporter (JSON)</button>
+        <button class="btn-secondary" onclick="document.getElementById('import-file').click()">Importer (JSON)</button>
+        <button class="btn-danger" onclick="clearArchive()">Effacer tout l'historique</button>
+      </div>
     </div>
   </div>
 
-  <!-- Step 4: Match History (current tournament) -->
-  <div id="history-card" class="card hidden">
-    <h2>Historique des matchs (tournoi en cours)</h2>
-    <div id="history-list" class="history-list"></div>
-  </div>
-
-  <!-- Step 5: Past Tournaments Archive -->
-  <div id="archive-card" class="card">
-    <h2>Historique des tournois sauvegardés</h2>
-
-    <!-- Combined Leaderboard -->
-    <div id="combined-leaderboard" style="margin-bottom: 24px;"></div>
-
-    <h2 style="font-size:1.1rem; margin-top:8px;">Détail par tournoi</h2>
-    <div id="archive-list"></div>
-    <div class="actions-row" style="margin-top:16px;">
-      <button class="btn-secondary" onclick="exportArchive()">Exporter (JSON)</button>
-      <button class="btn-secondary" onclick="document.getElementById('import-file').click()">Importer (JSON)</button>
-      <button class="btn-danger" onclick="clearArchive()">Effacer tout l'historique</button>
+  <!-- PANEL FIP -->
+  <div id="panel-fip" class="tab-panel">
+    <div class="card">
+      <h2>Classement FIP global (tous modes confondus)</h2>
+      <p class="legend" style="margin-bottom:16px;">Cumul de tous les tournois sauvegardés (5 et 8 joueurs). Pts/match = Points totaux ÷ Matchs joués.</p>
+      <div class="fip-table-wrap">
+        <div id="fip-leaderboard"></div>
+      </div>
+      <div class="actions-row" style="margin-top:16px;">
+        <button class="btn-secondary" onclick="exportArchive()">Exporter (JSON)</button>
+        <button class="btn-secondary" onclick="document.getElementById('import-file').click()">Importer (JSON)</button>
+        <button class="btn-danger" onclick="clearArchive()">Effacer tout l'historique</button>
+      </div>
     </div>
-    <input type="file" id="import-file" accept=".json" style="display:none" onchange="importArchive(event)">
   </div>
+
+  <input type="file" id="import-file" accept=".json" style="display:none" onchange="importArchive(event)">
 
   <script>
-    // Rotation issue de la grille fournie (lecture en colonnes)
-    // Americano complet : chaque joueur partenaire une seule fois avec chacun des 7 autres
-    const ROTATION_MATRIX = [
-      { c1: [[0, 2], [1, 3]], c2: [[4, 6], [5, 7]] }, // Tour 1
-      { c1: [[0, 1], [4, 5]], c2: [[2, 3], [6, 7]] }, // Tour 2
-      { c1: [[0, 3], [4, 7]], c2: [[2, 1], [6, 5]] }, // Tour 3
-      { c1: [[0, 4], [2, 6]], c2: [[1, 5], [3, 7]] }, // Tour 4
-      { c1: [[0, 6], [1, 7]], c2: [[2, 4], [3, 5]] }, // Tour 5
-      { c1: [[0, 5], [3, 6]], c2: [[2, 7], [1, 4]] }, // Tour 6
-      { c1: [[0, 7], [2, 5]], c2: [[1, 6], [3, 4]] }  // Tour 7
+    // Mode 8 rotation (unchanged)
+    const ROTATION_MATRIX_8 = [
+      { c1: [[0, 2], [1, 3]], c2: [[4, 6], [5, 7]] },
+      { c1: [[0, 1], [4, 5]], c2: [[2, 3], [6, 7]] },
+      { c1: [[0, 3], [4, 7]], c2: [[2, 1], [6, 5]] },
+      { c1: [[0, 4], [2, 6]], c2: [[1, 5], [3, 7]] },
+      { c1: [[0, 6], [1, 7]], c2: [[2, 4], [3, 5]] },
+      { c1: [[0, 5], [3, 6]], c2: [[2, 7], [1, 4]] },
+      { c1: [[0, 7], [2, 5]], c2: [[1, 6], [3, 4]] }
     ];
 
+    // Mode 5: 5 rounds, each sits once, balanced partners
+    const ROTATION_MATRIX_5 = [
+      { teams: [[0, 1], [2, 3]], sit: 4 },
+      { teams: [[0, 2], [1, 4]], sit: 3 },
+      { teams: [[0, 3], [2, 4]], sit: 1 },
+      { teams: [[0, 4], [1, 3]], sit: 2 },
+      { teams: [[1, 2], [3, 4]], sit: 0 }
+    ];
+
+    let currentMode = 8;
     let players = [];
     let currentRound = 0;
     let matchHistory = [];
     let tournamentFinished = false;
 
-    // --- Persistence (localStorage) ---
-    // Structure: { tournaments: [...], knownPlayers: [...] }
     const STORAGE_KEY = 'padel_americano_archive';
 
     function loadData() {
       try {
         const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
         if (!raw) return { tournaments: [], knownPlayers: [] };
-        // Compatibilité avec l'ancien format (tableau simple)
         if (Array.isArray(raw)) {
           return { tournaments: raw, knownPlayers: extractNamesFromTournaments(raw) };
         }
@@ -398,25 +523,21 @@
     function saveArchive(tournaments) {
       const data = loadData();
       data.tournaments = tournaments;
-      // Mettre à jour les noms connus à partir des tournois
-      const namesFromTournaments = extractNamesFromTournaments(tournaments);
-      data.knownPlayers = mergeUniqueNames(data.knownPlayers, namesFromTournaments);
+      data.knownPlayers = mergeUniqueNames(data.knownPlayers, extractNamesFromTournaments(tournaments));
       saveData(data);
     }
 
     function extractNamesFromTournaments(tournaments) {
       const names = new Set();
-      tournaments.forEach(t => {
-        (t.ranking || []).forEach(p => {
-          if (p.name) names.add(p.name);
-        });
+      (tournaments || []).forEach(t => {
+        (t.ranking || []).forEach(p => { if (p.name) names.add(p.name.trim()); });
       });
-      return Array.from(names);
+      return [...names];
     }
 
     function mergeUniqueNames(listA, listB) {
       const set = new Set([...(listA || []), ...(listB || [])].map(n => n.trim()).filter(Boolean));
-      return Array.from(set).sort((a, b) => a.localeCompare(b, 'fr'));
+      return [...set].sort((a, b) => a.localeCompare(b, 'fr'));
     }
 
     function getKnownPlayers() {
@@ -429,240 +550,279 @@
       saveData(data);
     }
 
-    // --- UI generation ---
-    function buildPlayerInputs() {
-      const setupInputs = document.getElementById('player-inputs');
-      setupInputs.innerHTML = ''; // never duplicate
-      for (let i = 0; i < 8; i++) {
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelector(`.tab-btn[data-tab="${tab}"]`).classList.add('active');
+      document.getElementById(tab === 'fip' ? 'panel-fip' : `panel-${tab}`).classList.add('active');
+
+      if (tab === 'fip') {
+        renderFIP();
+        document.getElementById('main-subtitle').textContent = 'Classement FIP global • Tous modes';
+      } else {
+        currentMode = parseInt(tab, 10);
+        document.getElementById('main-subtitle').textContent =
+          currentMode === 8
+            ? '8 Joueurs • 2 Terrains • 16 Points par Match'
+            : '5 Joueurs • 1 Terrain • 16 Points par Match • 5 Tours';
+        if (!document.getElementById(`setup-card-${currentMode}`).classList.contains('hidden')) {
+          buildPlayerInputs(currentMode);
+        }
+        renderArchiveForMode(currentMode);
+      }
+    }
+
+    let activeSuggestionIndex = -1;
+
+    function buildPlayerInputs(mode) {
+      const count = mode === 8 ? 8 : 5;
+      const setupInputs = document.getElementById(`player-inputs-${mode}`);
+      setupInputs.innerHTML = '';
+      for (let i = 0; i < count; i++) {
         setupInputs.innerHTML += `
           <div class="input-group">
             <label>Joueur ${i + 1}</label>
-            <input type="text" id="p${i}" value="Joueur ${i + 1}" autocomplete="off"
-                   onfocus="onNameFocus(this, ${i})"
-                   oninput="onNameInput(this, ${i})"
-                   onblur="onNameBlur(this, ${i})"
-                   onkeydown="onNameKeydown(event, ${i})">
-            <div class="suggestions" id="suggestions-${i}"></div>
-          </div>
-        `;
+            <input type="text" id="p${mode}-${i}" placeholder="Nom du joueur ${i + 1}"
+              autocomplete="off"
+              onfocus="onNameFocus(this, ${mode}, ${i})"
+              oninput="onNameInput(this, ${mode}, ${i})"
+              onblur="onNameBlur(this, ${mode}, ${i})"
+              onkeydown="onNameKeydown(event, ${mode}, ${i})">
+            <div class="suggestions" id="suggestions-${mode}-${i}"></div>
+          </div>`;
       }
     }
-    buildPlayerInputs();
 
-    // Render archive on load
-    renderArchive();
-
-    // --- Autocomplétion des noms ---
-    let activeSuggestionIndex = -1;
-
-    function onNameFocus(el, idx) {
-      if (el.value === `Joueur ${idx + 1}`) {
-        el.value = '';
-      }
+    function onNameFocus(el, mode, idx) {
       activeSuggestionIndex = -1;
-      showSuggestions(el, idx);
+      showSuggestions(el, mode, idx);
     }
 
-    function onNameInput(el, idx) {
+    function onNameInput(el, mode, idx) {
       activeSuggestionIndex = -1;
-      showSuggestions(el, idx);
+      showSuggestions(el, mode, idx);
     }
 
-    function onNameBlur(el, idx) {
-      // Petit délai pour laisser le temps au clic sur une suggestion
-      setTimeout(() => {
-        hideSuggestions(idx);
-        if (el.value.trim() === '') {
-          el.value = `Joueur ${idx + 1}`;
-        }
-      }, 180);
+    function onNameBlur(el, mode, idx) {
+      setTimeout(() => hideSuggestions(mode, idx), 180);
     }
 
-    function onNameKeydown(e, idx) {
-      const box = document.getElementById(`suggestions-${idx}`);
+    function onNameKeydown(e, mode, idx) {
+      const box = document.getElementById(`suggestions-${mode}-${idx}`);
       const items = box.querySelectorAll('.suggestion-item');
-      if (!items.length || !box.classList.contains('show')) return;
-
+      if (!items.length) return;
       if (e.key === 'ArrowDown') {
         e.preventDefault();
-        activeSuggestionIndex = (activeSuggestionIndex + 1) % items.length;
+        activeSuggestionIndex = Math.min(activeSuggestionIndex + 1, items.length - 1);
         updateActiveSuggestion(items);
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
-        activeSuggestionIndex = (activeSuggestionIndex - 1 + items.length) % items.length;
+        activeSuggestionIndex = Math.max(activeSuggestionIndex - 1, 0);
         updateActiveSuggestion(items);
       } else if (e.key === 'Enter' && activeSuggestionIndex >= 0) {
         e.preventDefault();
         items[activeSuggestionIndex].click();
       } else if (e.key === 'Escape') {
-        hideSuggestions(idx);
+        hideSuggestions(mode, idx);
       }
     }
 
     function updateActiveSuggestion(items) {
-      items.forEach((item, i) => {
-        item.classList.toggle('active', i === activeSuggestionIndex);
-      });
+      items.forEach((it, i) => it.classList.toggle('active', i === activeSuggestionIndex));
+      if (activeSuggestionIndex >= 0) items[activeSuggestionIndex].scrollIntoView({ block: 'nearest' });
     }
 
-    function showSuggestions(el, idx) {
-      const box = document.getElementById(`suggestions-${idx}`);
+    function showSuggestions(el, mode, idx) {
+      const box = document.getElementById(`suggestions-${mode}-${idx}`);
       const query = el.value.trim().toLowerCase();
       const known = getKnownPlayers();
-
       if (!query) {
-        box.classList.remove('show');
         box.innerHTML = '';
+        box.classList.remove('show');
         return;
       }
-
-      // Filtrer les noms qui commencent par la saisie
       const matches = known.filter(n => n.toLowerCase().startsWith(query) && n.toLowerCase() !== query);
-
-      // Afficher seulement s'il y a 2 propositions ou plus
-      if (matches.length < 2) {
-        box.classList.remove('show');
+      if (matches.length === 0) {
         box.innerHTML = '';
+        box.classList.remove('show');
         return;
       }
-
-      box.innerHTML = matches.slice(0, 8).map(name =>
-        `<div class="suggestion-item" onmousedown="selectSuggestion(${idx}, '${name.replace(/'/g, "\\'")}')">${name}</div>`
+      box.innerHTML = matches.slice(0, 8).map(n =>
+        `<div class="suggestion-item" onmousedown="selectSuggestion(${mode}, ${idx}, '${n.replace(/'/g, "\\'")}')">${n}</div>`
       ).join('');
       box.classList.add('show');
-    }
-
-    function selectSuggestion(idx, name) {
-      const el = document.getElementById(`p${idx}`);
-      el.value = name;
-      hideSuggestions(idx);
-      el.focus();
-    }
-
-    function hideSuggestions(idx) {
-      const box = document.getElementById(`suggestions-${idx}`);
-      box.classList.remove('show');
-      box.innerHTML = '';
       activeSuggestionIndex = -1;
     }
 
-    function startTournament() {
+    function selectSuggestion(mode, idx, name) {
+      const el = document.getElementById(`p${mode}-${idx}`);
+      el.value = name;
+      hideSuggestions(mode, idx);
+      el.focus();
+    }
+
+    function hideSuggestions(mode, idx) {
+      const box = document.getElementById(`suggestions-${mode}-${idx}`);
+      if (box) {
+        box.classList.remove('show');
+        box.innerHTML = '';
+      }
+    }
+
+    function startTournament(mode) {
+      const count = mode === 8 ? 8 : 5;
       players = [];
       matchHistory = [];
       tournamentFinished = false;
       currentRound = 0;
+      currentMode = mode;
 
       const names = [];
-      for (let i = 0; i < 8; i++) {
-        const name = document.getElementById(`p${i}`).value.trim() || `Joueur ${i + 1}`;
+      for (let i = 0; i < count; i++) {
+        const name = document.getElementById(`p${mode}-${i}`).value.trim() || `Joueur ${i + 1}`;
         names.push(name);
       }
 
-      // Vérifier que tous les noms sont uniques
       const uniqueNames = new Set(names.map(n => n.toLowerCase()));
-      if (uniqueNames.size !== 8) {
+      if (uniqueNames.size !== count) {
         alert('Tous les joueurs doivent avoir des noms différents. Merci de corriger les doublons.');
         return;
       }
 
-      // Enregistrer les noms dans la liste connue
       addKnownPlayers(names);
 
-      for (let i = 0; i < 8; i++) {
+      for (let i = 0; i < count; i++) {
         players.push({
           id: i, name: names[i], points: 0, played: 0,
           wins: 0, ties: 0, losses: 0, diff: 0
         });
       }
 
-      document.getElementById('setup-card').classList.add('hidden');
-      document.getElementById('round-card').classList.remove('hidden');
-      document.getElementById('leaderboard-card').classList.remove('hidden');
-      document.getElementById('history-card').classList.remove('hidden');
-      document.getElementById('archive-card').classList.add('hidden');
-      document.getElementById('end-actions').style.display = 'none';
+      document.getElementById(`setup-card-${mode}`).classList.add('hidden');
+      document.getElementById(`round-card-${mode}`).classList.remove('hidden');
+      document.getElementById(`leaderboard-card-${mode}`).classList.remove('hidden');
+      document.getElementById(`history-card-${mode}`).classList.remove('hidden');
+      document.getElementById(`archive-card-${mode}`).classList.add('hidden');
+      document.getElementById(`end-actions-${mode}`).style.display = 'none';
 
-      // Restore round-card content if it was replaced
-      document.getElementById('round-card').innerHTML = `
-        <h2 id="round-title">Tour 1 sur 7</h2>
-        <div class="court-grid">
-          <div class="court">
-            <div class="court-header">
-              <span class="court-title">Terrain 1</span>
-              <div class="scores-row">
-                <input type="number" id="c1-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score')">
-                <input type="number" id="c1-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score')">
+      if (mode === 8) {
+        document.getElementById('round-card-8').innerHTML = `
+          <h2 id="round-title-8">Tour 1 sur 7</h2>
+          <div class="court-grid" id="courts-8">
+            <div class="court">
+              <div class="court-header">
+                <span class="court-title">Terrain 1</span>
+                <div class="scores-row">
+                  <input type="number" id="c1-t1-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score-8')">
+                  <input type="number" id="c1-t2-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score-8')">
+                </div>
+              </div>
+              <div class="match-body">
+                <div class="team-side left">
+                  <span class="player-name" id="c1-t1-p1-8"></span>
+                  <span class="player-name" id="c1-t1-p2-8"></span>
+                </div>
+                <div class="vs-badge">VS</div>
+                <div class="team-side right">
+                  <span class="player-name" id="c1-t2-p1-8"></span>
+                  <span class="player-name" id="c1-t2-p2-8"></span>
+                </div>
               </div>
             </div>
-            <div class="match-body">
-              <div class="team-side left">
-                <span class="player-name" id="c1-t1-p1"></span>
-                <span class="player-name" id="c1-t1-p2"></span>
+            <div class="court">
+              <div class="court-header">
+                <span class="court-title">Terrain 2</span>
+                <div class="scores-row">
+                  <input type="number" id="c2-t1-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t2-score-8')">
+                  <input type="number" id="c2-t2-score-8" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t1-score-8')">
+                </div>
               </div>
-              <div class="vs-badge">VS</div>
-              <div class="team-side right">
-                <span class="player-name" id="c1-t2-p1"></span>
-                <span class="player-name" id="c1-t2-p2"></span>
+              <div class="match-body">
+                <div class="team-side left">
+                  <span class="player-name" id="c2-t1-p1-8"></span>
+                  <span class="player-name" id="c2-t1-p2-8"></span>
+                </div>
+                <div class="vs-badge">VS</div>
+                <div class="team-side right">
+                  <span class="player-name" id="c2-t2-p1-8"></span>
+                  <span class="player-name" id="c2-t2-p2-8"></span>
+                </div>
               </div>
             </div>
           </div>
-          <div class="court">
-            <div class="court-header">
-              <span class="court-title">Terrain 2</span>
-              <div class="scores-row">
-                <input type="number" id="c2-t1-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t2-score')">
-                <input type="number" id="c2-t2-score" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c2-t1-score')">
+          <div id="error-message-8" class="error-msg"></div>
+          <div class="nav-buttons">
+            <button onclick="submitRound(8)">Enregistrer les scores & Tour suivant</button>
+          </div>`;
+      } else {
+        document.getElementById('round-card-5').innerHTML = `
+          <h2 id="round-title-5">Tour 1 sur 5</h2>
+          <div id="waiting-box-5" class="waiting-box">Joueur en attente : <span id="waiting-player-5">—</span></div>
+          <div class="court-grid" id="courts-5">
+            <div class="court">
+              <div class="court-header">
+                <span class="court-title">Terrain unique</span>
+                <div class="scores-row">
+                  <input type="number" id="c1-t1-score-5" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t2-score-5')">
+                  <input type="number" id="c1-t2-score-5" class="score-input" min="0" max="16" oninput="handleScoreInput(this, 'c1-t1-score-5')">
+                </div>
               </div>
-            </div>
-            <div class="match-body">
-              <div class="team-side left">
-                <span class="player-name" id="c2-t1-p1"></span>
-                <span class="player-name" id="c2-t1-p2"></span>
-              </div>
-              <div class="vs-badge">VS</div>
-              <div class="team-side right">
-                <span class="player-name" id="c2-t2-p1"></span>
-                <span class="player-name" id="c2-t2-p2"></span>
+              <div class="match-body">
+                <div class="team-side left">
+                  <span class="player-name" id="c1-t1-p1-5"></span>
+                  <span class="player-name" id="c1-t1-p2-5"></span>
+                </div>
+                <div class="vs-badge">VS</div>
+                <div class="team-side right">
+                  <span class="player-name" id="c1-t2-p1-5"></span>
+                  <span class="player-name" id="c1-t2-p2-5"></span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div id="error-message" class="error-msg"></div>
-        <div class="nav-buttons">
-          <button onclick="submitRound()">Enregistrer les scores & Tour suivant</button>
-        </div>
-      `;
+          <div id="error-message-5" class="error-msg"></div>
+          <div class="nav-buttons">
+            <button onclick="submitRound(5)">Enregistrer les scores & Tour suivant</button>
+          </div>`;
+      }
 
-      loadRound(0);
-      updateLeaderboard();
-      updateHistory();
+      loadRound(mode, 0);
+      updateLeaderboard(mode);
+      updateHistory(mode);
     }
 
-    function loadRound(roundIdx) {
+    function loadRound(mode, roundIdx) {
       currentRound = roundIdx;
-      document.getElementById('round-title').innerText = `Tour ${roundIdx + 1} sur 7`;
-      document.getElementById('error-message').innerText = '';
+      const totalRounds = mode === 8 ? 7 : 5;
+      document.getElementById(`round-title-${mode}`).innerText = `Tour ${roundIdx + 1} sur ${totalRounds}`;
+      document.getElementById(`error-message-${mode}`).innerText = '';
 
-      const rot = ROTATION_MATRIX[roundIdx];
-
-      // Terrain 1
-      document.getElementById('c1-t1-p1').innerText = players[rot.c1[0][0]].name;
-      document.getElementById('c1-t1-p2').innerText = players[rot.c1[0][1]].name;
-      document.getElementById('c1-t2-p1').innerText = players[rot.c1[1][0]].name;
-      document.getElementById('c1-t2-p2').innerText = players[rot.c1[1][1]].name;
-
-      // Terrain 2
-      document.getElementById('c2-t1-p1').innerText = players[rot.c2[0][0]].name;
-      document.getElementById('c2-t1-p2').innerText = players[rot.c2[0][1]].name;
-      document.getElementById('c2-t2-p1').innerText = players[rot.c2[1][0]].name;
-      document.getElementById('c2-t2-p2').innerText = players[rot.c2[1][1]].name;
-
-      ['c1-t1-score','c1-t2-score','c2-t1-score','c2-t2-score'].forEach(id => {
-        document.getElementById(id).value = '';
-      });
+      if (mode === 8) {
+        const rot = ROTATION_MATRIX_8[roundIdx];
+        document.getElementById('c1-t1-p1-8').innerText = players[rot.c1[0][0]].name;
+        document.getElementById('c1-t1-p2-8').innerText = players[rot.c1[0][1]].name;
+        document.getElementById('c1-t2-p1-8').innerText = players[rot.c1[1][0]].name;
+        document.getElementById('c1-t2-p2-8').innerText = players[rot.c1[1][1]].name;
+        document.getElementById('c2-t1-p1-8').innerText = players[rot.c2[0][0]].name;
+        document.getElementById('c2-t1-p2-8').innerText = players[rot.c2[0][1]].name;
+        document.getElementById('c2-t2-p1-8').innerText = players[rot.c2[1][0]].name;
+        document.getElementById('c2-t2-p2-8').innerText = players[rot.c2[1][1]].name;
+        ['c1-t1-score-8','c1-t2-score-8','c2-t1-score-8','c2-t2-score-8'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+      } else {
+        const rot = ROTATION_MATRIX_5[roundIdx];
+        document.getElementById('c1-t1-p1-5').innerText = players[rot.teams[0][0]].name;
+        document.getElementById('c1-t1-p2-5').innerText = players[rot.teams[0][1]].name;
+        document.getElementById('c1-t2-p1-5').innerText = players[rot.teams[1][0]].name;
+        document.getElementById('c1-t2-p2-5').innerText = players[rot.teams[1][1]].name;
+        document.getElementById('waiting-player-5').innerText = players[rot.sit].name;
+        ['c1-t1-score-5','c1-t2-score-5'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+      }
     }
 
-    // Clamp score 0-16 + auto-balance
     function handleScoreInput(el, targetId) {
       let val = parseInt(el.value);
       if (isNaN(val)) {
@@ -685,69 +845,109 @@
       else p.losses++;
     }
 
-    function submitRound() {
-      const c1t1 = parseInt(document.getElementById('c1-t1-score').value);
-      const c1t2 = parseInt(document.getElementById('c1-t2-score').value);
-      const c2t1 = parseInt(document.getElementById('c2-t1-score').value);
-      const c2t2 = parseInt(document.getElementById('c2-t2-score').value);
+    function submitRound(mode) {
+      if (mode === 8) {
+        const c1t1 = parseInt(document.getElementById('c1-t1-score-8').value);
+        const c1t2 = parseInt(document.getElementById('c1-t2-score-8').value);
+        const c2t1 = parseInt(document.getElementById('c2-t1-score-8').value);
+        const c2t2 = parseInt(document.getElementById('c2-t2-score-8').value);
 
-      if (isNaN(c1t1) || isNaN(c1t2) || isNaN(c2t1) || isNaN(c2t2) ||
-          (c1t1 + c1t2 !== 16) || (c2t1 + c2t2 !== 16)) {
-        document.getElementById('error-message').innerText = 'Veuillez saisir des scores qui totalisent exactement 16 points sur chaque terrain.';
-        return;
-      }
+        if (isNaN(c1t1) || isNaN(c1t2) || isNaN(c2t1) || isNaN(c2t2) ||
+            (c1t1 + c1t2 !== 16) || (c2t1 + c2t2 !== 16)) {
+          document.getElementById('error-message-8').innerText = 'Veuillez saisir des scores qui totalisent exactement 16 points sur chaque terrain.';
+          return;
+        }
 
-      const rot = ROTATION_MATRIX[currentRound];
+        const rot = ROTATION_MATRIX_8[currentRound];
+        applyMatchResult(rot.c1[0][0], c1t1, c1t2);
+        applyMatchResult(rot.c1[0][1], c1t1, c1t2);
+        applyMatchResult(rot.c1[1][0], c1t2, c1t1);
+        applyMatchResult(rot.c1[1][1], c1t2, c1t1);
+        applyMatchResult(rot.c2[0][0], c2t1, c2t2);
+        applyMatchResult(rot.c2[0][1], c2t1, c2t2);
+        applyMatchResult(rot.c2[1][0], c2t2, c2t1);
+        applyMatchResult(rot.c2[1][1], c2t2, c2t1);
 
-      applyMatchResult(rot.c1[0][0], c1t1, c1t2);
-      applyMatchResult(rot.c1[0][1], c1t1, c1t2);
-      applyMatchResult(rot.c1[1][0], c1t2, c1t1);
-      applyMatchResult(rot.c1[1][1], c1t2, c1t1);
+        matchHistory.push({
+          round: currentRound + 1,
+          matches: [
+            {
+              team1: `${players[rot.c1[0][0]].name} & ${players[rot.c1[0][1]].name}`,
+              score1: c1t1,
+              team2: `${players[rot.c1[1][0]].name} & ${players[rot.c1[1][1]].name}`,
+              score2: c1t2
+            },
+            {
+              team1: `${players[rot.c2[0][0]].name} & ${players[rot.c2[0][1]].name}`,
+              score1: c2t1,
+              team2: `${players[rot.c2[1][0]].name} & ${players[rot.c2[1][1]].name}`,
+              score2: c2t2
+            }
+          ]
+        });
 
-      applyMatchResult(rot.c2[0][0], c2t1, c2t2);
-      applyMatchResult(rot.c2[0][1], c2t1, c2t2);
-      applyMatchResult(rot.c2[1][0], c2t2, c2t1);
-      applyMatchResult(rot.c2[1][1], c2t2, c2t1);
+        updateLeaderboard(8);
+        updateHistory(8);
 
-      matchHistory.push({
-        round: currentRound + 1,
-        matches: [
-          {
-            team1: `${players[rot.c1[0][0]].name} & ${players[rot.c1[0][1]].name}`,
-            score1: c1t1,
-            team2: `${players[rot.c1[1][0]].name} & ${players[rot.c1[1][1]].name}`,
-            score2: c1t2
-          },
-          {
-            team1: `${players[rot.c2[0][0]].name} & ${players[rot.c2[0][1]].name}`,
-            score1: c2t1,
-            team2: `${players[rot.c2[1][0]].name} & ${players[rot.c2[1][1]].name}`,
-            score2: c2t2
-          }
-        ]
-      });
-
-      updateLeaderboard();
-      updateHistory();
-
-      if (currentRound < 6) {
-        loadRound(currentRound + 1);
+        if (currentRound < 6) {
+          loadRound(8, currentRound + 1);
+        } else {
+          tournamentFinished = true;
+          document.getElementById('round-card-8').innerHTML = '<h2 style="text-align:center; color: var(--accent);">🏆 Tournoi terminé ! 🏆</h2>';
+          document.getElementById('end-actions-8').style.display = 'flex';
+          document.getElementById('archive-card-8').classList.remove('hidden');
+        }
       } else {
-        tournamentFinished = true;
-        document.getElementById('round-card').innerHTML = '<h2 style="text-align:center; color: var(--accent);">🏆 Tournoi terminé ! 🏆</h2>';
-        document.getElementById('end-actions').style.display = 'flex';
-        document.getElementById('archive-card').classList.remove('hidden');
+        const c1t1 = parseInt(document.getElementById('c1-t1-score-5').value);
+        const c1t2 = parseInt(document.getElementById('c1-t2-score-5').value);
+
+        if (isNaN(c1t1) || isNaN(c1t2) || (c1t1 + c1t2 !== 16)) {
+          document.getElementById('error-message-5').innerText = 'Veuillez saisir des scores qui totalisent exactement 16 points.';
+          return;
+        }
+
+        const rot = ROTATION_MATRIX_5[currentRound];
+        applyMatchResult(rot.teams[0][0], c1t1, c1t2);
+        applyMatchResult(rot.teams[0][1], c1t1, c1t2);
+        applyMatchResult(rot.teams[1][0], c1t2, c1t1);
+        applyMatchResult(rot.teams[1][1], c1t2, c1t1);
+
+        matchHistory.push({
+          round: currentRound + 1,
+          sit: players[rot.sit].name,
+          matches: [
+            {
+              team1: `${players[rot.teams[0][0]].name} & ${players[rot.teams[0][1]].name}`,
+              score1: c1t1,
+              team2: `${players[rot.teams[1][0]].name} & ${players[rot.teams[1][1]].name}`,
+              score2: c1t2
+            }
+          ]
+        });
+
+        updateLeaderboard(5);
+        updateHistory(5);
+
+        if (currentRound < 4) {
+          loadRound(5, currentRound + 1);
+        } else {
+          tournamentFinished = true;
+          document.getElementById('round-card-5').innerHTML = '<h2 style="text-align:center; color: var(--accent);">🏆 Tournoi terminé ! 🏆</h2>';
+          document.getElementById('end-actions-5').style.display = 'flex';
+          document.getElementById('archive-card-5').classList.remove('hidden');
+        }
       }
     }
 
-    function updateLeaderboard() {
+    function updateLeaderboard(mode) {
+      const totalMatches = mode === 8 ? 7 : 4;
       const sorted = [...players].sort((a, b) => {
         if (b.points !== a.points) return b.points - a.points;
         if (b.diff !== a.diff) return b.diff - a.diff;
         return b.wins - a.wins;
       });
 
-      const tbody = document.getElementById('leaderboard-body');
+      const tbody = document.getElementById(`leaderboard-body-${mode}`);
       tbody.innerHTML = '';
 
       sorted.forEach((player, index) => {
@@ -757,17 +957,16 @@
           <tr class="${rankClass}">
             <td>#${index + 1}</td>
             <td>${player.name}</td>
-            <td>${player.played} / 7</td>
+            <td>${player.played} / ${totalMatches}</td>
             <td>${player.wins}-${player.ties}-${player.losses}</td>
             <td>${diffStr}</td>
             <td>${player.points} pts</td>
-          </tr>
-        `;
+          </tr>`;
       });
     }
 
-    function updateHistory() {
-      const container = document.getElementById('history-list');
+    function updateHistory(mode) {
+      const container = document.getElementById(`history-list-${mode}`);
       if (matchHistory.length === 0) {
         container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Aucun match joué pour le moment.</p>';
         return;
@@ -776,7 +975,7 @@
       const reversed = [...matchHistory].reverse();
       container.innerHTML = reversed.map(r => `
         <div class="history-round">
-          <h3>Tour ${r.round}</h3>
+          <h3>Tour ${r.round}${r.sit ? ` <span style="font-weight:normal;color:var(--text-muted);font-size:0.85rem;">(attente : ${r.sit})</span>` : ''}</h3>
           ${r.matches.map(m => `
             <div class="history-match">
               <span class="team-left">${m.team1}</span>
@@ -788,8 +987,7 @@
       `).join('');
     }
 
-    // --- Save / Archive ---
-    function saveCurrentTournament() {
+    function saveCurrentTournament(mode) {
       if (!tournamentFinished && matchHistory.length === 0) {
         alert('Aucun tournoi à sauvegarder.');
         return;
@@ -803,6 +1001,7 @@
 
       const tournament = {
         id: Date.now(),
+        type: String(mode),
         date: new Date().toLocaleString('fr-FR'),
         ranking: sorted.map((p, i) => ({
           rank: i + 1,
@@ -811,43 +1010,76 @@
           wins: p.wins,
           ties: p.ties,
           losses: p.losses,
-          diff: p.diff
+          diff: p.diff,
+          played: p.played
         })),
         matchHistory: matchHistory
       };
 
       const archive = loadArchive();
-      archive.unshift(tournament); // newest first
+      archive.unshift(tournament);
       saveArchive(archive);
-      renderArchive();
+      renderArchiveForMode(mode);
+      if (document.getElementById('panel-fip').classList.contains('active')) renderFIP();
       alert('Tournoi sauvegardé avec succès !');
     }
 
-    function renderArchive() {
-      const archive = loadArchive();
-      const container = document.getElementById('archive-list');
-      const combinedContainer = document.getElementById('combined-leaderboard');
+    function renderArchiveForMode(mode) {
+      const archive = loadArchive().filter(t => (t.type || '8') === String(mode));
+      const container = document.getElementById(`archive-list-${mode}`);
 
       if (archive.length === 0) {
-        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Aucun tournoi sauvegardé pour le moment.</p>';
-        combinedContainer.innerHTML = '';
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Aucun tournoi sauvegardé pour ce mode.</p>';
         return;
       }
 
-      // --- Combined Leaderboard across all tournaments ---
+      container.innerHTML = archive.map(t => `
+        <div class="past-tournament">
+          <h3>
+            <span>Tournoi du ${t.date} <span class="type-badge type-${t.type || '8'}">${t.type || '8'} joueurs</span></span>
+            <button class="btn-secondary" style="width:auto;padding:4px 10px;font-size:0.8rem;" onclick="deleteTournament(${t.id})">Supprimer</button>
+          </h3>
+          ${(t.ranking || []).slice(0, mode === 8 ? 8 : 5).map((p, i) => {
+            const cls = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+            const diffStr = p.diff > 0 ? `+${p.diff}` : p.diff;
+            return `
+              <div class="mini-rank ${cls}">
+                <span><span class="pos">#${p.rank}</span> <span class="name">${p.name}</span></span>
+                <span>${p.points} pts • ${p.wins}-${p.ties}-${p.losses} • Diff ${diffStr}</span>
+              </div>`;
+          }).join('')}
+        </div>
+      `).join('');
+    }
+
+    function renderFIP() {
+      const archive = loadArchive();
+      const container = document.getElementById('fip-leaderboard');
+
+      if (archive.length === 0) {
+        container.innerHTML = '<p style="color: var(--text-muted); text-align: center;">Aucun tournoi sauvegardé pour le moment.</p>';
+        return;
+      }
+
       const stats = {};
       archive.forEach(t => {
-        t.ranking.forEach(p => {
+        (t.ranking || []).forEach(p => {
           if (!stats[p.name]) {
-            stats[p.name] = { name: p.name, tournaments: 0, points: 0, wins: 0, ties: 0, losses: 0, diff: 0, firsts: 0, seconds: 0, thirds: 0 };
+            stats[p.name] = {
+              name: p.name, tournaments: 0, matches: 0, points: 0,
+              wins: 0, ties: 0, losses: 0, diff: 0,
+              firsts: 0, seconds: 0, thirds: 0
+            };
           }
           const s = stats[p.name];
           s.tournaments++;
-          s.points += p.points;
-          s.wins += p.wins;
-          s.ties += p.ties;
-          s.losses += p.losses;
-          s.diff += p.diff;
+          s.points += (p.points || 0);
+          s.wins += (p.wins || 0);
+          s.ties += (p.ties || 0);
+          s.losses += (p.losses || 0);
+          s.diff += (p.diff || 0);
+          const m = (p.played != null) ? p.played : ((p.wins || 0) + (p.ties || 0) + (p.losses || 0));
+          s.matches += m;
           if (p.rank === 1) s.firsts++;
           if (p.rank === 2) s.seconds++;
           if (p.rank === 3) s.thirds++;
@@ -860,64 +1092,49 @@
         return b.wins - a.wins;
       });
 
-      combinedContainer.innerHTML = `
-        <h3 style="color: var(--accent); margin-bottom: 12px; font-size: 1.1rem;">Classement combiné (tous les tournois)</h3>
+      container.innerHTML = `
         <table>
           <thead>
             <tr>
               <th>Rang</th>
               <th>Joueur</th>
               <th>Tournois</th>
+              <th>Matchs</th>
+              <th>Points</th>
+              <th>Diff</th>
+              <th>W-T-L</th>
+              <th>% Victoire</th>
+              <th>Pts/match</th>
               <th>🥇</th>
               <th>🥈</th>
               <th>🥉</th>
-              <th>W-T-L</th>
-              <th>Diff</th>
-              <th>Points</th>
             </tr>
           </thead>
           <tbody>
             ${combined.map((p, i) => {
               const rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
               const diffStr = p.diff > 0 ? `+${p.diff}` : `${p.diff}`;
+              const winPct = p.matches > 0 ? ((p.wins / p.matches) * 100).toFixed(1) + '%' : '—';
+              const ppm = p.matches > 0 ? (p.points / p.matches).toFixed(1) : '—';
               return `
                 <tr class="${rankClass}">
                   <td>#${i + 1}</td>
                   <td>${p.name}</td>
                   <td>${p.tournaments}</td>
+                  <td>${p.matches}</td>
+                  <td>${p.points}</td>
+                  <td>${diffStr}</td>
+                  <td>${p.wins}-${p.ties}-${p.losses}</td>
+                  <td>${winPct}</td>
+                  <td>${ppm}</td>
                   <td>${p.firsts}</td>
                   <td>${p.seconds}</td>
                   <td>${p.thirds}</td>
-                  <td>${p.wins}-${p.ties}-${p.losses}</td>
-                  <td>${diffStr}</td>
-                  <td>${p.points} pts</td>
-                </tr>
-              `;
+                </tr>`;
             }).join('')}
           </tbody>
         </table>
-        <p class="legend" style="margin-bottom: 8px;">Points, Diff, W-T-L = cumulés sur tous les tournois sauvegardés</p>
-      `;
-
-      // --- Detail per tournament (unchanged) ---
-      container.innerHTML = archive.map(t => `
-        <div class="past-tournament">
-          <h3>
-            <span>Tournoi du ${t.date}</span>
-            <button class="btn-secondary" style="width:auto;padding:4px 10px;font-size:0.8rem;" onclick="deleteTournament(${t.id})">Supprimer</button>
-          </h3>
-          ${t.ranking.slice(0, 8).map((p, i) => {
-            const cls = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
-            const diffStr = p.diff > 0 ? `+${p.diff}` : p.diff;
-            return `
-              <div class="mini-rank ${cls}">
-                <span><span class="pos">#${p.rank}</span> <span class="name">${p.name}</span></span>
-                <span>${p.points} pts • ${p.wins}-${p.ties}-${p.losses} • Diff ${diffStr}</span>
-              </div>
-            `;
-          }).join('')}
-        </div>
-      `).join('');
+        <p class="legend">% Victoire = Victoires ÷ Matchs joués • Pts/match = Points totaux ÷ Matchs joués</p>`;
     }
 
     function deleteTournament(id) {
@@ -925,13 +1142,17 @@
       let archive = loadArchive();
       archive = archive.filter(t => t.id !== id);
       saveArchive(archive);
-      renderArchive();
+      renderArchiveForMode(8);
+      renderArchiveForMode(5);
+      if (document.getElementById('panel-fip').classList.contains('active')) renderFIP();
     }
 
     function clearArchive() {
       if (!confirm('Effacer TOUT l\'historique des tournois et la liste des joueurs connus ? Cette action est irréversible.')) return;
       localStorage.removeItem(STORAGE_KEY);
-      renderArchive();
+      renderArchiveForMode(8);
+      renderArchiveForMode(5);
+      if (document.getElementById('panel-fip').classList.contains('active')) renderFIP();
     }
 
     function exportArchive() {
@@ -957,20 +1178,21 @@
           let importedTournaments = [];
           let importedPlayers = [];
 
-          // Nouveau format { tournaments, knownPlayers }
           if (imported && !Array.isArray(imported) && imported.tournaments) {
             importedTournaments = imported.tournaments || [];
             importedPlayers = imported.knownPlayers || [];
-          }
-          // Ancien format (tableau de tournois)
-          else if (Array.isArray(imported)) {
+          } else if (Array.isArray(imported)) {
             importedTournaments = imported;
             importedPlayers = extractNamesFromTournaments(imported);
           } else {
             throw new Error('Format invalide');
           }
 
-          // Fusionner les tournois (éviter les doublons d'id)
+          importedTournaments = importedTournaments.map(t => ({
+            ...t,
+            type: t.type || '8'
+          }));
+
           const existingIds = new Set(current.tournaments.map(t => t.id));
           const newOnes = importedTournaments.filter(t => !existingIds.has(t.id));
 
@@ -985,7 +1207,9 @@
             knownPlayers: mergedPlayers
           });
 
-          renderArchive();
+          renderArchiveForMode(8);
+          renderArchiveForMode(5);
+          if (document.getElementById('panel-fip').classList.contains('active')) renderFIP();
           alert(`${newOnes.length} tournoi(s) importé(s).\n${mergedPlayers.length} joueur(s) connus au total.`);
         } catch {
           alert('Fichier JSON invalide.');
@@ -995,17 +1219,27 @@
       event.target.value = '';
     }
 
-    function startNewTournament() {
+    function startNewTournament(mode) {
       if (!confirm('Commencer un nouveau tournoi ? Les scores du tournoi en cours seront perdus s\'ils ne sont pas sauvegardés.')) return;
-      document.getElementById('setup-card').classList.remove('hidden');
-      document.getElementById('round-card').classList.add('hidden');
-      document.getElementById('leaderboard-card').classList.add('hidden');
-      document.getElementById('history-card').classList.add('hidden');
-      document.getElementById('archive-card').classList.remove('hidden');
-      document.getElementById('end-actions').style.display = 'none';
-      buildPlayerInputs();
-      renderArchive();
+      document.getElementById(`setup-card-${mode}`).classList.remove('hidden');
+      document.getElementById(`round-card-${mode}`).classList.add('hidden');
+      document.getElementById(`leaderboard-card-${mode}`).classList.add('hidden');
+      document.getElementById(`history-card-${mode}`).classList.add('hidden');
+      document.getElementById(`archive-card-${mode}`).classList.remove('hidden');
+      document.getElementById(`end-actions-${mode}`).style.display = 'none';
+      players = [];
+      matchHistory = [];
+      tournamentFinished = false;
+      currentRound = 0;
+      buildPlayerInputs(mode);
+      renderArchiveForMode(mode);
     }
+
+    // INIT
+    buildPlayerInputs(8);
+    buildPlayerInputs(5);
+    renderArchiveForMode(8);
+    renderArchiveForMode(5);
   </script>
 </body>
 </html>
