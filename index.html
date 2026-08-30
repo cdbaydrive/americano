@@ -496,6 +496,19 @@
 
     const STORAGE_KEY = 'padel_americano_archive';
 
+    // Liste prédéfinie partagée (disponible sur tous les appareils)
+    const PREDEFINED_PLAYERS = [
+      "Alan",
+      "Anthony",
+      "Benoit",
+      "Cyril",
+      "François",
+      "Jean",
+      "Joris",
+      "Nicolas",
+      "Pierre Olivier"
+    ];
+
     function loadData() {
       try {
         const raw = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -541,7 +554,8 @@
     }
 
     function getKnownPlayers() {
-      return loadData().knownPlayers || [];
+      const stored = loadData().knownPlayers || [];
+      return mergeUniqueNames(PREDEFINED_PLAYERS, stored);
     }
 
     function addKnownPlayers(names) {
